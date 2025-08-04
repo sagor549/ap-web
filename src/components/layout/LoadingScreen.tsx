@@ -54,7 +54,7 @@ export default function LoadingScreen() {
     splitTextElements(".intro-title h1", "words, chars", true);
     splitTextElements(".outro-title h1");
     splitTextElements(".tag p", "words");
-    splitTextElements(".card h1", "words, chars", true);
+    splitTextElements(" h1", "words, chars", true);
 
     // Set initial positions
     gsap.set(
@@ -202,7 +202,7 @@ export default function LoadingScreen() {
         6
       )
       .to(
-        ".container .card",
+        ".container ",
         {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           duration: 0.75,
@@ -210,7 +210,7 @@ export default function LoadingScreen() {
         6.25
       )
       .to(
-        ".container .card h1 .char span",
+        ".container  h1 .char span",
         {
           y: "0%",
           duration: 0.75,
