@@ -38,16 +38,18 @@ export default function LoadingScreen() {
           charsClass: "char",
         });
 
-        if (type.includes("chars")) {
-          splitText.chars.forEach((char: any, index: number) => {
-            const originalText = char.textContent;
-            char.innerHTML = `<span>${originalText}</span>`;
+      splitText.chars.forEach((char, index: number) => {
+  if (!(char instanceof HTMLElement)) return;
 
-            if (addFirstChar && index === 0) {
-              char.classList.add("first-char");
-            }
-          });
-        }
+  const originalText = char.textContent;
+  char.innerHTML = `<span>${originalText}</span>`;
+
+  if (addFirstChar && index === 0) {
+    char.classList.add("first-char");
+  }
+});
+
+
       });
     };
 
