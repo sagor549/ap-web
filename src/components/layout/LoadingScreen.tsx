@@ -15,7 +15,7 @@ export default function LoadingScreen() {
   const splitOverlayRef = useRef<HTMLDivElement>(null);
   const tagsOverlayRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
+  
   
   useDisableScroll();
 
