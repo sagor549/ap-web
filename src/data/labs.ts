@@ -1,0 +1,17 @@
+export const labs = [
+  "/images/lab/01.png",
+  "/videos/lab/02-compressed.mov",
+  "/images/lab/03.png",
+  "/images/lab/04.png",
+  "/images/lab/05.png",
+  "/images/lab/06.png",
+  "/images/lab/07.png",
+  "/images/lab/08.png",
+  "/images/lab/09.png",
+  "/images/lab/10.png",
+  "/images/lab/11.png",
+  "/images/lab/12.png",
+  "/images/lab/13.png",
+  "/images/lab/14.png",
+  "/images/lab/15.png",
+];

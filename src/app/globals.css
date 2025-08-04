@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-3xl: 1700px;
+}
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+}
+
+@font-face {
+  font-family: "Respira-Black";
+  src: url("/fonts/Respira-Black.otf") format("opentype");
+}
+
+.typeface-respira-black {
+  font-family: "Respira-Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+::selection {
+  @apply bg-[#caf182];
+}
+
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: transform, opacity, scale;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 50 ;
+  animation: none !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink-animation {
+  animation: blink 1s infinite;
+}
+
+#about p span {
+  @apply inline-block;
+}
+#about .word1 {
+  padding: 0 0 0 0.8em;
+  will-change: transform;
+}
+#about .word2 {
+  padding: 0 1.6em 0 0;
+  will-change: transform;
+}
+#about .word3 {
+  padding: 0 0 0 2.4em;
+  will-change: transform;
+}
