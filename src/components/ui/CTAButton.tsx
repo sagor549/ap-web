@@ -48,7 +48,7 @@ export default function CTAButton() {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 100, scale: 0.95 }}
+      initial={{ opacity: 0, y: -100, scale: 0.95 }}
       animate={
         !shouldAnimate || !isFooterInView
           ? { opacity: 1, y: 0, scale: 1 }
@@ -64,7 +64,7 @@ export default function CTAButton() {
           ease: [0.16, 1, 0.3, 1],
         },
       }}
-      className="py-2 pl-2 pr-4 md:pr-8 rounded-2xl md:rounded-[20px] bg-neutral-900 border border-neutral-800 fixed left-4 md:left-1/2 right-4 md:right-auto md:-translate-x-1/2 bottom-4 md:bottom-6 md:w-[700px] z-50 overflow-hidden"
+      className="py-2 pl-2 pr-4 md:pr-8 rounded-2xl md:rounded-[20px] bg-neutral-900 border border-neutral-800 fixed left-4 md:left-1/2 right-4 md:right-auto md:-translate-x-1/2 top-4 z-50 overflow-hidden"
     >
       <motion.div
         initial={{ height: 0, opacity: 0 }}
@@ -105,7 +105,8 @@ export default function CTAButton() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-5">
           <div className="h-[60px] w-[60px] md:h-[80px] md:w-[80px] rounded-lg md:rounded-xl bg-black overflow-hidden relative">
-           <Image src="/images/logo.png" alt="Logo"/>
+           <Image src="/images/logo.png" alt="Logo" width={80}
+  height={80}/>
           </div>
 
           <div className="flex flex-col gap-1.5 md:gap-2 w-[250px] sm:w-[500px] relative">
