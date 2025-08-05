@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion, Transition } from "framer-motion";
+import Image from "next/image";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -493,7 +494,7 @@ export default function HeroSection() {
                           {/* Website Content */}
                           <div className={`bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden ${isCurrent ? 'h-[calc(100%-1.5rem)]' : 'h-[calc(100%-1rem)]'}`}>
                             <div className="aspect-video w-full h-full">
-                              <img
+                              <Image
                                 src={image.url}
                                 alt={image.alt}
                                 className="w-full h-full object-cover"

@@ -105,7 +105,7 @@ export default function CTAButton() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-5">
           <div className="h-[60px] w-[60px] md:h-[80px] md:w-[80px] rounded-lg md:rounded-xl bg-black overflow-hidden relative">
-           <img src="/images/logo.png" alt="Logo"/>
+           <Image src="/images/logo.png" alt="Logo"/>
           </div>
 
           <div className="flex flex-col gap-1.5 md:gap-2 w-[250px] sm:w-[500px] relative">
