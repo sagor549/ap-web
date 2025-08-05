@@ -1,6 +1,6 @@
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import Header from "../components/layout/Header";
+
 import { ReactLenis } from "lenis/react";
 import { Analytics } from "@vercel/analytics/next";
 import CTAButton from "@/components/ui/CTAButton";

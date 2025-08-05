@@ -11,7 +11,7 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const secondSectionRef = useRef<HTMLDivElement>(null);
-  const heroImgRef = useRef<HTMLDivElement>(null);
+
   const [currentImage, setCurrentImage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -85,10 +85,6 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [websiteImages.length]);
 
-  // Handle manual image selection
-  const handleImageSelect = (index: number) => {
-    setCurrentImage(index);
-  };
 
   const getImagePosition = (index: number) => {
     const current = currentImage;
@@ -207,7 +203,7 @@ export default function HeroSection() {
 
             // First section animation
             if (progress <= 0.5) {
-              const headerProgress = progress / 0.5;
+              
               let opacity = 1;
               let translateZ = 0;
               
@@ -538,7 +534,7 @@ export default function HeroSection() {
   >
     <p className="text-xl md:text-2xl text-white leading-relaxed">
       You can have the best ads in the world, but if your landing page sucks, 
-      you're throwing money in the fire. Our landing pages don't just look good—they convert.
+       you&apos;re throwing money in the fire. Our landing pages don't just look good—they convert.
     </p>
 
     <div className="space-y-4 md:space-y-6">
