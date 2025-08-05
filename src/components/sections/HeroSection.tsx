@@ -534,7 +534,7 @@ export default function HeroSection() {
   >
     <p className="text-xl md:text-2xl text-white leading-relaxed">
       You can have the best ads in the world, but if your landing page sucks, 
-       you&apos;re throwing money in the fire. Our landing pages don't just look good—they convert.
+       you&apos;re throwing money in the fire. Our landing pages don&apos;t just look good—they convert.
     </p>
 
     <div className="space-y-4 md:space-y-6">
