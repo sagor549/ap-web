@@ -19,6 +19,7 @@ const HeroSection: React.FC = () => {
 
 
 
+
   const websiteImages: WebsiteImage[] = [
     {
       id: 1,
@@ -62,6 +63,16 @@ const HeroSection: React.FC = () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [websiteImages.length]);
+  useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+  };
+
+  handleResize(); // set initial value
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
 
   const getImagePosition = (index: number) => {
     const current = currentImage;
