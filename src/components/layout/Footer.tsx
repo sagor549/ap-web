@@ -31,7 +31,7 @@ export default function Footer() {
           style={{ y }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-[clamp(100px,14vw,250px)] tracking-tight"
         >
-          codeOFsagar
+          Ap Agency
         </motion.h2>
 
         <Link
@@ -62,7 +62,7 @@ export default function Footer() {
         </Link>
         <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
           <a
-            href="mailto:jason@itsjay.us"
+            href="mailto:"
             className="lg:col-span-12 flex items-end p-4 lg:p-6 bg-neutral-300/50 backdrop-blur-sm h-[120px] lg:h-full rounded-lg lg:rounded-xl text-[clamp(16px,1.4vw,24px)] font-medium leading-tight cursor-pointer hover:backdrop-blur-md transition-all duration-500"
           >
             Contact

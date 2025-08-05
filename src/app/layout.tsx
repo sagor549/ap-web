@@ -30,8 +30,9 @@ export default function RootLayout({
               >
                 <LoadingScreen />
                 <DocumentTitleChanger />
-                <Header />
                 <CTAButton />
+               
+                
                 {children}
                 <FooterWrapper />
                 <Analytics />

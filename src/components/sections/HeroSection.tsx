@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
-import { motion } from "framer-motion";
+import { motion, Transition } from "framer-motion";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,6 +14,13 @@ export default function HeroSection() {
   const heroImgRef = useRef<HTMLDivElement>(null);
   const [currentImage, setCurrentImage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+   // Refs for second section animations
+  const fastRef = useRef<HTMLHeadingElement>(null);
+  const cleanRef = useRef<HTMLHeadingElement>(null);
+  const convertingRef = useRef<HTMLHeadingElement>(null);
+  const agencyRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
 
   gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -51,12 +58,12 @@ export default function HeroSection() {
     }
   ];
 
-  // Transition settings for image stack
-  const transitionSettings = {
+  // Fixed transition type
+  const transitionSettings: Transition = {
     type: "tween",
     duration: 0.8,
     ease: "easeInOut"
-  };
+  } as const;
 
   // Handle window resize
   useEffect(() => {
@@ -185,7 +192,7 @@ export default function HeroSection() {
     }
   };
 
-  useGSAP(
+   useGSAP(
     () => {
       const setupScrollTrigger = () => {
         ScrollTrigger.create({
@@ -210,40 +217,133 @@ export default function HeroSection() {
                 translateZ = -fadeProgress * 300;
               }
 
-              gsap.set(headerRef.current, {
-                transform: `translateZ(${translateZ}px)`,
-                opacity,
-              });
+              if (headerRef.current) {
+                gsap.set(headerRef.current, {
+                  transform: `translateZ(${translateZ}px)`,
+                  opacity,
+                });
+              }
             } else {
-              gsap.set(headerRef.current, { opacity: 0 });
+              if (headerRef.current) {
+                gsap.set(headerRef.current, { opacity: 0 });
+              }
             }
 
             // Second section animation
             if (progress < 0.4) {
-              gsap.set(secondSectionRef.current, {
-                transform: "translateZ(800px)",
-                opacity: 0,
-              });
+              if (secondSectionRef.current) {
+                gsap.set(secondSectionRef.current, {
+                  transform: "translateZ(800px)",
+                  opacity: 0,
+                });
+              }
             } else if (progress >= 0.4 && progress <= 0.8) {
               const sectionProgress = (progress - 0.4) / 0.4;
               const translateZ = 800 - sectionProgress * 800;
               const opacity = sectionProgress;
 
-              gsap.set(secondSectionRef.current, {
-                transform: `translateZ(${translateZ}px)`,
-                opacity,
-              });
+              if (secondSectionRef.current) {
+                gsap.set(secondSectionRef.current, {
+                  transform: `translateZ(${translateZ}px)`,
+                  opacity,
+                });
+              }
             } else if (progress > 0.8) {
-              gsap.set(secondSectionRef.current, {
-                transform: "translateZ(0px)",
-                opacity: 1,
-              });
+              if (secondSectionRef.current) {
+                gsap.set(secondSectionRef.current, {
+                  transform: "translateZ(0px)",
+                  opacity: 1,
+                });
+              }
             }
           },
         });
       };
 
       setupScrollTrigger();
+
+      // Second section text animations
+      if (secondSectionRef.current) {
+        gsap.fromTo(
+          fastRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.2,
+            scrollTrigger: {
+              trigger: secondSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+
+        gsap.fromTo(
+          cleanRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.4,
+            scrollTrigger: {
+              trigger: secondSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+
+        gsap.fromTo(
+          convertingRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.6,
+            scrollTrigger: {
+              trigger: secondSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+
+        gsap.fromTo(
+          agencyRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.8,
+            scrollTrigger: {
+              trigger: secondSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+
+        gsap.fromTo(
+          descriptionRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 1,
+            scrollTrigger: {
+              trigger: secondSectionRef.current,
+              start: "top 80%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
+      }
 
       const handleResize = () => {
         ScrollTrigger.refresh();
@@ -260,19 +360,20 @@ export default function HeroSection() {
   );
 
   return (
-    <div ref={containerRef} className="w-full ">
-      <AuroraBackground className=" ">
-        <section className="hero relative w-full   md:left-0" >
+    <div ref={containerRef} className="w-full">
+      <AuroraBackground className="">
+        <section className="hero relative w-full" style={{ perspective: '1000px' }}>
           {/* First Section - Original Hero Content */}
           <div 
-            className="hero-content   " 
+            className="hero-content " 
             style={{ perspective: '1000px' }}
-             ref={headerRef}
+            ref={headerRef}
           >
-            <div className="container mx-auto px-5 md:px-6 py-32 md:py-16 relative z-10 min-h-screen flex flex-col justify-center">
+            <div className="container mx-auto px-5 md:px-6 py-2 md:py-16 relative z-10 min-h-screen flex flex-col justify-center items-center lg:items-stretch">
+              
               {/* Top Centered Title */}
               <motion.div 
-                className="w-full text-center mb-6 md:mb-12"
+                className="w-full text-center mb-0  md:mt-0 md:mb-12"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -288,16 +389,17 @@ export default function HeroSection() {
                 </motion.h2>
               </motion.div>
 
-              <div className={`flex flex-col ${isMobile ? '' : 'lg:grid lg:grid-cols-2'} gap-0 md:gap-12 items-center`}>
+              {/* Restored original structure with mobile centering */}
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-0 md:gap-12 items-center">
+                
                 {/* Left Section - Content */}
                 <motion.div 
-                  className="space-y-6 md:space-y-8 w-full text-center lg:text-left order-2 lg:order-1"
+                  className="space-y-4 md:space-y-8 w-full text-center lg:text-left order-2 lg:order-1 relative bottom-16 lg:bottom-0 "
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                 
                 >
-                  <div className="space-y-4 md:space-y-6">
+                  <div className="space-y-0 md:space-y-6">
                     <motion.h1 
                       className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
                       initial={{ opacity: 0, y: 30 }}
@@ -328,7 +430,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 1.0 }}
-                    className="pt-4"
+                    className="pt-0 md:pt-4"
                   >
                     <button className="text-black font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl" style={{background:"#B9935B"}}>
                       Build My Page Now
@@ -337,8 +439,7 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* Right Section - Responsive website image stack */}
-                <div className={`w-full flex items-center justify-center ${isMobile ? 'mb-8 order-1' : 'lg:order-2'}`} 
-                    style={{ perspective: isMobile ? '800px' : '1200px' }}>
+                <div className="w-full flex justify-center order-1 lg:order-2 mb-24 lg:mb-0">
                   <div className={`relative w-full max-w-2xl ${isMobile ? 'h-[180px] sm:h-[220px]' : 'h-[220px] sm:h-[280px] md:h-[350px] lg:h-[450px]'}`}>
                     {/* Stack of all images */}
                     {websiteImages.map((image, index) => {
@@ -425,45 +526,45 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
-              
-          
-              
             </div>
           </div>
 
           {/* Second Section - New Content */}
-          <div className="absolute inset-0 flex items-center justify-center min-h-screen" style={{ perspective: '1000px' }}>
-            <div ref={secondSectionRef} className="text-center max-w-4xl px-6" style={{ transform: 'translateZ(800px)', opacity: 0 }}>
-              <p className="text-xl md:text-2xl text-white  leading-relaxed">
-                You can have the best ads in the world, but if your landing page sucks, 
-                you're throwing money in the fire. Our landing pages don't just look good—they convert.
-              </p>
-              
-              <div className="space-y-2 md:space-y-">
-                <h2 className="text-4xl md:text-8xl font-bold text-white leading-tight">
-                  Fast.
-                </h2>
-                <h2 className="text-4xl md:text-8xl font-bold text-[#B9935B] leading-tight">
-                  Clean.
-                </h2>
-                <h2 className="text-4xl md:text-8xl font-bold text-white leading-tight">
-                  Converting.
-                </h2>
-              </div>
-              
-              <div className="mt-8 md:mt-12 space-y-4">
-                <h3 className="text-2xl md:text-4xl font-bold text-[#B9935B]">AP Agency</h3>
-                <p className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto">
-                  We deliver high-converting landing pages, full website development, 
-                  and mobile-responsive designs that turn your traffic into customers.
-                </p>
-              </div>
-            </div>
-          </div>
+       <div className="absolute inset-0 flex items-start justify-center min-h-screen pt-16 z-10">
+  <div
+    ref={secondSectionRef}
+    className="text-center w-full px-6 max-w-4xl space-y-10"
+    style={{ transform: 'translateZ(800px)', opacity: 0 }}
+  >
+    <p className="text-xl md:text-2xl text-white leading-relaxed">
+      You can have the best ads in the world, but if your landing page sucks, 
+      you're throwing money in the fire. Our landing pages don't just look good—they convert.
+    </p>
+
+    <div className="space-y-4 md:space-y-6">
+      <h2 className="text-4xl md:text-8xl font-bold text-white leading-tight opacity-0"  ref={fastRef}>
+        Fast.
+      </h2>
+      <h2 className="text-4xl md:text-8xl font-bold text-[#B9935B] leading-tight" ref={cleanRef}>
+        Clean.
+      </h2>
+      <h2 className="text-4xl md:text-8xl font-bold text-white leading-tight"  ref={convertingRef}>
+        Converting.
+      </h2>
+    </div>
+
+    <div className="space-y-4 md:space-y-6">
+      <h3 className="text-2xl md:text-4xl font-bold text-[#B9935B]"  ref={agencyRef}>AP Agency</h3>
+      <p className="text-base md:text-xl text-gray-300 max-w-2xl mx-auto" ref={descriptionRef} >
+        We deliver high-converting landing pages, full website development, 
+        and mobile-responsive designs that turn your traffic into customers.
+      </p>
+    </div>
+  </div>
+</div>
+
         </section>
       </AuroraBackground>
-
-      
     </div>
   );
 }
