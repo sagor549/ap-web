@@ -104,15 +104,8 @@ export default function CTAButton() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-5">
-          <div className="h-[60px] w-[60px] md:h-[80px] md:w-[80px] rounded-lg md:rounded-xl bg-neutral-100 overflow-hidden relative">
-            <video
-              src="/videos/emoji.mov"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute top-[52%] left-[47%] -translate-x-1/2 -translate-y-1/2 h-full w-full scale-140"
-            />
+          <div className="h-[60px] w-[60px] md:h-[80px] md:w-[80px] rounded-lg md:rounded-xl bg-black overflow-hidden relative">
+           <img src="/images/logo.png" alt="Logo"/>
           </div>
 
           <div className="flex flex-col gap-1.5 md:gap-2 w-[250px] sm:w-[500px] relative">
@@ -120,7 +113,7 @@ export default function CTAButton() {
               href="/"
               className="md:text-lg font-semibold text-neutral-100 uppercase"
             >
-              Sagar Ghosh
+              Ap Agency
             </Link>
             <Slider />
           </div>
@@ -163,8 +156,7 @@ function Slider() {
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
           className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-1.5`}
         >
-          Modern Web Developer, Web Animator , Saas Builder, Next.js
-          Dev,
+          Modern Website Building, Web Animations , Landing page Building,
         </motion.p>
         <motion.p
           initial={{ x: 0 }}

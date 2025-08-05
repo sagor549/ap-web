@@ -46,41 +46,8 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-2 lg:gap-0">
-            <div className="overflow-hidden">
-              <motion.div
-                initial={{ y: "100%" }}
-                animate={{ y: "0%" }}
-                transition={{
-                  duration: 1,
-                  delay: isInitialLoad ? 2.6 : 0.6,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="w-full pointer-events-none lg:pr-[4vw]"
-              >
-                <img
-                  src="/images/other/design.png"
-                  alt="Design"
-                  className="h-[15vw] md:h-[16vw] lg:h-[17vw]"
-                />
-              </motion.div>
-            </div>
-            <div className="overflow-hidden w-full">
-              <motion.div
-                initial={{ y: "100%" }}
-                animate={{ y: "0%" }}
-                transition={{
-                  duration: 1,
-                  delay: isInitialLoad ? 2.7 : 0.7,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                <img
-                  src="/images/other/engineer.png"
-                  alt="Engineer"
-                  className="w-full pointer-events-none"
-                />
-              </motion.div>
-            </div>
+           
+           
           </div>
         </div>
       </section>
