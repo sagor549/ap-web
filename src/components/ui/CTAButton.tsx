@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { motion, useInView } from "motion/react";
+import { motion } from "motion/react";
 import { useRef, useState } from "react";
 import { lcddot } from "@/fonts";
 import useOnClickOutside from "@/hooks/useOnClickOutside";
-import { useFooter } from "@/contexts/footer-context";
+
 import { useTransitionRouter } from "next-view-transitions";
 import { pageTransition } from "@/constants/pageTransition";
 import { usePathname } from "next/navigation";
@@ -33,27 +33,22 @@ const navItems = [
 
 export default function CTAButton() {
   const ref = useRef<HTMLDivElement>(null);
-  const { footerRef } = useFooter();
+  
   const [isOpen, setIsOpen] = useState(false);
   const { isInitialLoad } = useInitialLoad();
-  const pathname = usePathname();
+  
 
   useOnClickOutside(isOpen, ref as React.RefObject<HTMLElement>, () =>
     setIsOpen(false)
   );
 
-  const isFooterInView = useInView(footerRef, { amount: 0.4 });
-  const shouldAnimate = pathname !== "/lab" && footerRef.current;
+ 
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: -100, scale: 0.95 }}
-      animate={
-        !shouldAnimate || !isFooterInView
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { y: 200, scale: 0.95, opacity: 1 }
-      }
+      animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{
         duration: 1,
         delay: isInitialLoad ? 3 : 0,
@@ -64,7 +59,7 @@ export default function CTAButton() {
           ease: [0.16, 1, 0.3, 1],
         },
       }}
-      className="py-2 pl-2 pr-4 md:pr-8 rounded-2xl md:rounded-[20px] bg-neutral-900 border border-neutral-800 fixed left-4 md:left-1/2 right-4 md:right-auto md:-translate-x-1/2 top-4 z-50 overflow-hidden"
+      className="py-2 pl-2 pr-4 md:pr-8 rounded-2xl md:rounded-[20px] bg-neutral-900 border border-neutral-800 fixed left-4 md:left-1/2 right-4 md:right-auto md:-translate-x-1/2 top-4 z-50 "
     >
       <motion.div
         initial={{ height: 0, opacity: 0 }}
@@ -104,15 +99,19 @@ export default function CTAButton() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-5">
-          <div className="h-[60px] w-[60px] md:h-[80px] md:w-[80px] rounded-lg md:rounded-xl bg-black overflow-hidden relative">
-           <Image src="/images/logo.png" alt="Logo" width={80}
-  height={80}/>
+         <div className="h-[136px] w-[136px] -my-7 overflow-visible relative">
+            <Image 
+              src="/images/logo.png" 
+              alt="Logo" 
+              fill
+              className="object-cover"
+            />
           </div>
 
           <div className="flex flex-col gap-1.5 md:gap-2 w-[250px] sm:w-[500px] relative">
             <Link
               href="/"
-              className="md:text-lg font-semibold text-neutral-100 uppercase"
+              className="md:text-2xl font-semibold  uppercase" style={{color:"#B9935B"}}
             >
               Ap Agency
             </Link>

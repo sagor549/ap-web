@@ -14,10 +14,18 @@ interface WebsiteImage {
 
 const HeroSection: React.FC = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-
+useEffect(() => {
+    // Check if window is available (client-side)
+    if (typeof window !== 'undefined') {
+      setIsDesktop(window.innerWidth >= 1024);
+      const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
 
   const websiteImages: WebsiteImage[] = [
@@ -63,54 +71,66 @@ const HeroSection: React.FC = () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [websiteImages.length]);
-  useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
-  };
 
-  handleResize(); // set initial value
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
-
-
-  const getImagePosition = (index: number) => {
+ const getImagePosition = (index: number) => {
     const current = currentImage;
     const total = websiteImages.length;
     const relativeIndex = (index - current + total) % total;
 
-    if (isMobile) {
-      // Mobile layout - vertical stack
+    // Desktop layout - centered stack
+    if (isDesktop) {
       if (relativeIndex === 0) {
         return {
           zIndex: 50,
           opacity: 1,
           scale: 1,
-          y: 0,
           x: 0,
+          y: 0,
+          rotateY: 0,
+          rotateX: 0,
           filter: 'brightness(1) blur(0px)',
+          transformOrigin: 'center center',
         };
       } else if (relativeIndex === 1) {
         return {
           zIndex: 40,
-          opacity: 0.9,
-          scale: 0.95,
-          y: 30,
-          x: 0,
+          opacity: 1,
+          scale: 0.94,
+          x: 60,
+          y: 10,
+          rotateY: -18,
+          rotateX: 2,
           filter: 'brightness(0.9) blur(0.5px)',
+          transformOrigin: 'center center',
+        };
+      } else if (relativeIndex === 2) {
+        return {
+          zIndex: 30,
+          opacity: 1,
+          scale: 0.88,
+          x: 120,
+          y: 20,
+          rotateY: -30,
+          rotateX: 4,
+          filter: 'brightness(0.75) blur(1px)',
+          transformOrigin: 'center center',
         };
       } else {
         return {
-          zIndex: 30,
-          opacity: 0,
-          scale: 0.9,
-          y: 60,
-          x: 0,
-          filter: 'brightness(0.8) blur(1px)',
+          zIndex: 20,
+          opacity: 1,
+          scale: 0.85,
+          x: 150,
+          y: 30,
+          rotateY: -45,
+          rotateX: 5,
+          filter: 'brightness(0.6) blur(2px)',
+          transformOrigin: 'center center',
         };
       }
-    } else {
-      // Desktop layout - horizontal stack
+    } 
+    // Mobile layout - centered stack
+    else {
       if (relativeIndex === 0) {
         return {
           zIndex: 50,
@@ -128,54 +148,50 @@ const HeroSection: React.FC = () => {
           zIndex: 40,
           opacity: 0.85,
           scale: 0.94,
-          x: 70,
+          x: 30,
           y: 10,
           rotateY: -18,
           rotateX: 2,
           filter: 'brightness(0.9) blur(0.5px)',
-          transformOrigin: 'left center',
+          transformOrigin: 'center center',
         };
       } else if (relativeIndex === 2) {
         return {
           zIndex: 30,
           opacity: 0.7,
           scale: 0.88,
-          x: 130,
+          x: 60,
           y: 20,
           rotateY: -30,
           rotateX: 4,
           filter: 'brightness(0.75) blur(1px)',
-          transformOrigin: 'left center',
+          transformOrigin: 'center center',
         };
       } else {
         return {
           zIndex: 20,
           opacity: 0,
           scale: 0.85,
-          x: 160,
+          x: 90,
           y: 30,
           rotateY: -45,
           rotateX: 5,
           filter: 'brightness(0.6) blur(2px)',
-          transformOrigin: 'left center',
+          transformOrigin: 'center center',
         };
       }
     }
   };
 
-  const handleImageSelect = (index: number): void => {
-    setCurrentImage(index);
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCurrentImage(prev => (prev + 1) % websiteImages.length);
-    }, 3000);
-  };
 
   // Animation settings
   const transitionSettings = {
     duration: 0.8,
     ease: "easeInOut" as const
   };
+
+
+
 
   return (
   <div>
@@ -249,9 +265,9 @@ const HeroSection: React.FC = () => {
           </motion.div>
 
           {/* Right Section - Responsive website image stack */}
-          <div className={`w-full flex items-center justify-center order-1 lg:order-2 ${isMobile ? 'mb-8' : ''}`} 
-               style={{ perspective: isMobile ? '1000px' : '1200px' }}>
-            <div className="relative w-3xl max-w-2xl h-[220px] sm:h-[280px] md:h-[350px] lg:h-[450px] xl:h-[500px]">
+          <div className="w-full flex items-center justify-center order-1 lg:order-2 "
+               >
+            <div className="relative w-72 md:w-6xl max-w-6xl h-[180px] sm:h-[280px] md:h-[350px] lg:h-[400px] xl:h-[500px]">
               {/* Stack of all images */}
               {websiteImages.map((image, index) => {
                 const position = getImagePosition(index);
@@ -338,23 +354,8 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
         
-        {/* Mobile Indicators */}
-        {isMobile && (
-          <div className="flex justify-center mt-8 order-3">
-            <div className="flex space-x-2">
-              {websiteImages.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    currentImage === index ? 'bg-[#B9935B]' : 'bg-gray-500'
-                  }`}
-                  onClick={() => handleImageSelect(index)}
-                  aria-label={`Show slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+      
+       
       </div>
        </AuroraBackground>
    </div>
