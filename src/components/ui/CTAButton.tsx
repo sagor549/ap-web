@@ -99,8 +99,8 @@ export default function CTAButton() {
       </motion.div>
 
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 md:gap-5">
-         <div className="h-[106px] w-[106px] -my-15 overflow-y-visible relative">
+        <div className="flex items-center gap-0 md:gap-5">
+         <div className="h-[106px] w-[106px] md:h-[125px] md:w-[125px] -my-7 -ml-1 md:ml-0 overflow-y-visible relative">
             <Image 
               src="/images/logo.png" 
               alt="Logo" 
@@ -109,7 +109,7 @@ export default function CTAButton() {
             />
           </div>
 
-          <div className="flex flex-col gap-1.5 md:gap-2 w-[250px] sm:w-[500px] relative">
+          <div className="flex flex-col gap-1.5 md:gap-2 flex-1 min-w-0 relative">
             <Link
               href="/"
               className="md:text-2xl font-semibold  uppercase" style={{color:"#B9935B"}}
@@ -132,7 +132,7 @@ export default function CTAButton() {
         ) : (
           <Menu
             onClick={() => setIsOpen((prev) => !prev)}
-            className="w-7 h-7 text-neutral-100 hover:text-neutral-400 transition-all duration-300 cursor-pointer"
+            className="w-7 h-7 text-neutral-100 hover:text-neutral-400 transition-all duration-300 cursor-pointer "
             aria-label="Open menu"
             role="button"
             aria-expanded={isOpen}
@@ -148,7 +148,7 @@ export default function CTAButton() {
 
 function Slider() {
   return (
-    <div className="relative w-48 md:w-full h-4 md:h-4.5 overflow-hidden flex items-center justify-center bg-neutral-900">
+    <div className="relative w-56 md:w-full h-4 md:h-4.5 overflow-hidden flex items-center justify-center bg-neutral-900">
       {/* Left gradient fade */}
       <div className="absolute left-0 top-0 h-full w-10 z-10 pointer-events-none bg-gradient-to-r from-neutral-900/95 to-neutral-900/0" />
       
