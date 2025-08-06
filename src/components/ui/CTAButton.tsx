@@ -59,8 +59,9 @@ export default function CTAButton() {
           ease: [0.16, 1, 0.3, 1],
         },
       }}
-      className="py-2 pl-2 pr-4 md:pr-8 rounded-2xl md:rounded-[20px] bg-neutral-900 border border-neutral-800 fixed left-4 md:left-1/2 right-4 md:right-auto md:-translate-x-1/2 top-4 z-50 "
+      className="py-2 pl-2 pr-4 md:pr-8 rounded-2xl md:rounded-[20px] bg-neutral-900 border border-neutral-800 fixed left-4 md:left-1/2 right-4 md:right-auto md:-translate-x-1/2 top-4 z-50  overflow-y-visible "
     >
+      
       <motion.div
         initial={{ height: 0, opacity: 0 }}
         animate={{
@@ -99,12 +100,12 @@ export default function CTAButton() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 md:gap-5">
-         <div className="h-[136px] w-[136px] -my-7 overflow-visible relative">
+         <div className="h-[106px] w-[106px] -my-15 overflow-y-visible relative">
             <Image 
               src="/images/logo.png" 
               alt="Logo" 
               fill
-              className="object-cover"
+              className="object-cover overflow-y-visible"
             />
           </div>
 
@@ -143,34 +144,53 @@ export default function CTAButton() {
   );
 }
 
+
+
 function Slider() {
   return (
-    <div className="flex justify-center items-center h-4 md:h-4.5 overflow-hidden relative w-full">
-      <div className="absolute left-0 h-full w-10 bg-linear-to-r from-neutral-900/95 to-neutral-900/0 z-10" />
-      <div className="absolute right-0 h-full w-10 bg-linear-to-l from-neutral-900/95 to-neutral-900/0 z-10" />
+    <div className="relative w-48 md:w-full h-4 md:h-4.5 overflow-hidden flex items-center justify-center bg-neutral-900">
+      {/* Left gradient fade */}
+      <div className="absolute left-0 top-0 h-full w-10 z-10 pointer-events-none bg-gradient-to-r from-neutral-900/95 to-neutral-900/0" />
+      
+      {/* Right gradient fade */}
+      <div className="absolute right-0 top-0 h-full w-10 z-10 pointer-events-none bg-gradient-to-l from-neutral-900/95 to-neutral-900/0" />
 
-      <div className="flex overflow-hidden">
-        <motion.p
+      {/* Scrolling Text Wrapper */}
+      <div className="flex w-full overflow-hidden">
+        {/* Animated content */}
+        <motion.div
+          className="flex shrink-0"
           initial={{ x: 0 }}
           animate={{ x: "-100%" }}
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
-          className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-1.5`}
         >
-          Modern Website Building, Web Animations , Landing page Building,
-        </motion.p>
-        <motion.p
+          <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6 `}>
+            Modern Website Building, Web Animations, Landing Page Building, 
+          </p>
+          <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
+            Modern Web Developer, Web Animator, Saas Builder, Next.js Dev,
+          </p>
+        </motion.div>
+
+        {/* Duplicate for seamless loop */}
+        <motion.div
+          className="flex shrink-0"
           initial={{ x: 0 }}
           animate={{ x: "-100%" }}
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
-          className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-1.5`}
         >
-          Modern Web Developer, Web Animator , Saas Builder, Next.js
-          Dev,
-        </motion.p>
+          <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
+            Modern Website Building, Web Animations, Landing Page Building, 
+          </p>
+          <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
+            Modern Web Developer, Web Animator, Saas Builder, Next.js Dev,
+          </p>
+        </motion.div>
       </div>
     </div>
   );
 }
+
 
 function NavItem({
   title,
