@@ -7,18 +7,11 @@ export default function LoadingScreen() {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Disable scrolling on mount
-    document.body.style.overflow = "hidden";
-    
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 3000);
 
-    return () => {
-      clearTimeout(timer);
-      // Re-enable scrolling when component unmounts
-      document.body.style.overflow = "unset";
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -55,7 +48,6 @@ export default function LoadingScreen() {
             />
           </motion.div>
           
-          {/* Optional subtle pulse effect */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ 

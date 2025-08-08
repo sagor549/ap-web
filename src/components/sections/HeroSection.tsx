@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { AuroraBackground } from '../ui/aura';
-
+import Link from "next/link";
 
 
 interface WebsiteImage {
@@ -258,9 +258,9 @@ useEffect(() => {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="pt-4"
             >
-              <button className="text-black font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl" style={{background:"#B9935B"}}>
+              <Link href="/contact" className="text-black font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl" style={{background:"#B9935B"}}>
                 Build My Page Now
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
 

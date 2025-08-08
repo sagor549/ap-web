@@ -3,6 +3,18 @@
 @theme {
   --breakpoint-3xl: 1700px;
 }
+body.loading-screen-active {
+  overflow: hidden;
+  touch-action: none;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
+/* Remove this once you've updated the code */
+body {
+  overflow: auto;
+}
 
 @layer base {
   * {
