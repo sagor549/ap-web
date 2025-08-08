@@ -157,12 +157,15 @@ export default function Services() {
 function ServicesList() {
   return (
     <ul className="flex flex-col text-[#B9935B]">
-    
+     {services.map((service) => (
+  <ServiceCard key={service.title} service={service} />
+))}
+
     </ul>
   );
 }
 
-function ServiceCard({ service, }: { service: Service;  }) {
+function ServiceCard({ service }: { service: Service }) {
   const keywordsRef = useRef(null);
   const imageContainerRef = useRef(null);
 
