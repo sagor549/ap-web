@@ -9,6 +9,8 @@ import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageTransition } from "@/constants/pageTransition";
+import { AuroraBackground } from '../ui/aura';
+
 
 export default function Work() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -19,18 +21,19 @@ export default function Work() {
   const router = useTransitionRouter();
 
   return (
+    <AuroraBackground showRadialGradient>
     <section
       ref={sectionRef}
-      className="flex flex-col items-center py-28 px-4 lg:px-8"
+      className="flex flex-col items-center py-28 px-4 lg:px-8 "
     >
       <h2 className="flex justify-between w-full mb-6 lg:mb-8">
         <Copy>
-          <span className="text-[clamp(48px,12vw,200px)] font-bold tracking-tight leading-[0.8] uppercase">
-            Work
+          <span className="text-4xl md:text-7xl uppercase text-[#B9935B]">
+            Our Works
           </span>
         </Copy>
         <Copy delay={0.2}>
-          <span className="text-[clamp(48px,12vw,200px)] font-bold tracking-tight leading-[0.8] uppercase">
+          <span className="text-4xl md:text-7xl uppercase text-[#B9935B]">
             &apos;25
           </span>
         </Copy>
@@ -74,12 +77,13 @@ export default function Work() {
           });
         }}
       >
-        <span className="text-[clamp(20px,1.5vw,32px)] font-medium">
+        <span className="text-4xl md:text-7xl uppercase text-[#B9935B]">
           See all
         </span>
 
         <ArrowRight className="w-6 h-6" />
       </Link>
     </section>
+    </AuroraBackground>
   );
 }

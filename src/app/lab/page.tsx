@@ -8,7 +8,7 @@ export default function Lab() {
   const { isInitialLoad } = useInitialLoad();
 
   return (
-    <main className="bg-neutral-100 h-screen w-screen">
+    <main className="bg-black h-screen w-screen">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="hidden md:block overflow-hidden">
           <motion.h1

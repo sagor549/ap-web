@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { AuroraBackground } from '../ui/aurora-background';
+import { AuroraBackground } from '../ui/aura';
 
 
 
@@ -225,15 +225,15 @@ useEffect(() => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <div className="space-y-4 md:space-y-6">
+            <div className="space-y-4 md:space-y-9">
               <motion.h1 
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight"
+                className="text-3xl md:text-4xl lg:text-9xl xl:text-9xl font-bold text-white leading-tight"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Turn <span  style={{color:"#B9935B"}}>Clicks</span>
-                <br />
+                Turn <span  style={{color:"#B9935B"}}>Clicks  </span>
+                
                 Into <span style={{color:"#B9935B"}}>Clients</span>.
               </motion.h1>
 

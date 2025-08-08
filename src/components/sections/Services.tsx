@@ -3,11 +3,12 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { motion, useScroll, useTransform, useInView } from "motion/react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef } from "react";
 import { lcddot } from "@/fonts";
 import Image from "next/image";
 import Copy from "@/components/layout/Copy";
+import { cn } from "../../lib/utlis";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -20,83 +21,142 @@ type Service = {
 
 const services = [
   {
-    title: "Brand Strategy",
+    title: "Website Development",
     description:
-      "Helping individuals and startups shape their brand identity by understanding their purpose, audience, and goals — then crafting the right strategy to bring it all together online.",
+      "Building high-performance websites with modern tech stacks. We create responsive, SEO-optimized sites that convert visitors into customers and elevate your digital presence.",
     keywords: [
-      "Research & Insights",
-      "Naming & Copywriting",
-      "Voice & Tone",
-      "Positioning",
-      "Strategy Planning",
-      "Creative Direction",
+      "React/Next.js",
+      "Responsive Design",
+      "Performance Optimization",
+      "E-commerce Solutions",
+      "CMS Integration",
+      "SEO Foundations",
     ],
     image: "/images/services/brand-strategy.png",
   },
   {
-    title: "Digital Design",
+    title: "Landing Page Design",
     description:
-      "Designing modern, intuitive user interfaces that balance aesthetics with usability. I use motion, structure, and responsiveness to create seamless experiences across devices.",
+      "Crafting conversion-focused landing pages that drive results. Our data-driven approach combines persuasive copy, strategic CTAs, and compelling visuals to maximize your ROI.",
     keywords: [
+      "Conversion Optimization",
+      "A/B Testing",
+      "Lead Generation",
       "UI/UX Design",
-      "Responsive Web Design",
-      "Wireframing",
-      "Framer Motion",
-      "GSAP Animations",
-      "Prototyping",
+      "Framer Development",
+      "Analytics Integration",
     ],
     image: "/images/services/digital-design.png",
   },
   {
-    title: "Development",
+    title: "Digital Strategy",
     description:
-      "Developing full-stack web applications using the MERN stack, Firebase, and modern frontend frameworks. From authentication to animations — I bring designs to life with clean, scalable code.",
+      "Developing comprehensive digital roadmaps that align with business objectives. We identify growth opportunities and create actionable plans to amplify your online impact.",
     keywords: [
-      "React.js",
-      "MongoDB",
-      "Express.js",
-      "Node.js",
-      "Firebase",
-      "APIs",
-      "CMS Integration",
+      "Market Analysis",
+      "User Journey Mapping",
+      "Content Strategy",
+      "KPI Definition",
+      "Technical Audits",
+      "Competitive Research",
     ],
     image: "/images/services/development.png",
   },
 ];
 
+interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
+  children: React.ReactNode;
+  showRadialGradient?: boolean;
+}
+
+const AuroraBackground = ({
+  className,
+  children,
+  showRadialGradient = true,
+  ...props
+}: AuroraBackgroundProps) => {
+  return (
+    <div
+      className={cn(
+        "relative flex flex-col bg-zinc-950 dark:bg-zinc-900 w-full",
+        className
+      )}
+      {...props}
+    >
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={
+          {
+            "--aurora": "repeating-linear-gradient(280deg, #0a0808 30%, #1a1a1d 15%, #2d2828 20%, #1f1c1c 25%, #B9935B 30%)",
+            "--dark-gradient": "repeating-linear-gradient(280deg, #000 0%, #2b2727 7%, transparent 10%, transparent 12%, #000 16%)",
+            "--blue-300": "#454f5a",
+            "--blue-400": "#5e6266",
+            "--blue-500": "#363d44",
+            "--indigo-300": "#7d829b",
+            "--violet-200": "#B9935B",
+            "--black": "#000000",
+            "--white": "#f7eeee",
+            "--transparent": "transparent",
+          } as React.CSSProperties
+        }
+      >
+        <div
+          className={cn(
+            `after:animate-aurora pointer-events-none absolute -inset-[12px] opacity-40 blur-[15px] invert filter will-change-transform 
+            [--aurora:repeating-linear-gradient(280deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)] 
+            [--dark-gradient:repeating-linear-gradient(280deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)] 
+            after:absolute after:inset-0 after:mix-blend-difference after:content-[""] dark:invert-0 after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
+            `[background-image:var(--dark-gradient),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%]`,
+            `after:[background-size:200%,_100%] after:[background-attachment:fixed]`,
+            showRadialGradient && `[mask-image:radial-gradient(ellipse_at_100%_100%,black_40%,var(--transparent)_70%)]`,
+          )}
+        ></div>
+        
+        <div className="absolute inset-0 pointer-events-none [background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxmaWx0ZXIgaWQ9ImciPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIxLjQiIG51bU9jdGF2ZXM9IjUiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2cpIiBvcGFjaXR5PSIwLjE1Ii8+PC9zdmc+')] mix-blend-soft-light" />
+        
+        <div className="absolute inset-0 pointer-events-none [background-image:linear-gradient(to_top,rgba(175, 171, 171, 0.8)_0%,rgba(175, 171, 171, 0.8)_50%,transparent_100%)]" />
+        
+        <div className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_at_50%_100%,rgba(119, 119, 119, 0.8)_0%,rgba(119, 119, 119, 0.8)_100%)]" />
+      </div>
+      {children}
+    </div>
+  );
+};
 
 export default function Services() {
   return (
-    <section className="px-2 lg:px-4 py-16 lg:py-24">
-      <div className="flex flex-col gap-16 lg:gap-24 bg-neutral-900 px-4 pt-16 lg:pt-24 pb-4 rounded-2xl lg:rounded-[20px]">
-        <div className="lg:grid lg:grid-cols-12 gap-24">
-          <div className="flex flex-col col-span-12 lg:col-span-10 lg:col-start-3">
+    <AuroraBackground>
+      <section className="px-2 lg:px-4 py-16 lg:py-24 relative z-10">
+        <div className="flex flex-col gap-16 lg:gap-16 px-4 pt-16 lg:pt-24 pb-4">
+          <div className="flex flex-col">
             <Copy>
-              <h2 className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-400 uppercase font-medium tracking-wider mb-2">
-                Services
+              <h2 className="text-5xl md:text-7xl text-white uppercase mb-4 text-center">
+                Our Services
               </h2>
             </Copy>
             <Copy>
-              <p className="text-neutral-100 text-[clamp(24px,3.3vw,56px)] font-medium leading-[1.1] lg:leading-[1.05]">
-               Constantly evolving with every project, I merge design, development, and strategy to build meaningful digital experiences. From concept to code, my process brings clarity, motion, and purpose to everything I create.
-
-
+              <p className="text-neutral-100 text-3xl md:text-4xl text-center max-w-4xl mx-auto">
+                We transform <span className="text-[#B9935B]">digital visions</span> into 
+                high-performing websites and landing pages. Through our 
+                <span className="text-[#B9935B]"> strategic approach</span>, we create 
+                <span className="text-[#B9935B]"> measurable results</span> that drive growth 
+                and establish <span className="text-[#B9935B]">digital excellence</span>.
               </p>
             </Copy>
           </div>
-        </div>
 
-        <div className="flex flex-col bg-neutral-800 rounded-xl lg:rounded-2xl px-4 lg:px-5">
-          <ServicesList />
+          <div className="flex flex-col bg-black/20 backdrop-blur-sm rounded-xl lg:rounded-2xl px-4 lg:px-5 text-[#B9935B] border border-neutral-700">
+            <ServicesList />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </AuroraBackground>
   );
 }
 
 function ServicesList() {
   return (
-    <ul className="flex flex-col">
+    <ul className="flex flex-col text-[#B9935B]">
       {services.map((service, index) => (
         <ServiceCard key={service.title} service={service} index={index} />
       ))}
@@ -126,21 +186,17 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
   return (
     <li className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 pt-10 last:pb-4 not-last:pb-10 lg:last:pb-10 not-last:border-b not-last:border-neutral-700">
-      <Copy>
-        <p className="text-xs lg:text-[clamp(14px,0.8vw,18px)] text-neutral-300 uppercase font-medium tracking-wider mb-1 lg:col-span-2">
-          0{index + 1}
-        </p>
-      </Copy>
-
-      <Copy>
-        <h3 className="text-[clamp(24px,3.3vw,56px)] text-neutral-100 font-medium lg:col-span-4 mb-6 lg:mb-0 lg:-mt-4">
-          {service.title}
-        </h3>
-      </Copy>
-
-      <div className="flex flex-col gap-4 lg:gap-6 lg:col-span-3 mb-8 lg:mb-0">
+      <div className="lg:col-span-5 mb-6 lg:mb-0">
         <Copy>
-          <p className="text-[clamp(16px,1.2vw,20px)] text-neutral-100 font-medium leading-[1.3]">
+          <h3 className="text-4xl md:text-5xl font-medium text-[#B9935B]">
+            {service.title}
+          </h3>
+        </Copy>
+      </div>
+
+      <div className="flex flex-col gap-4 lg:gap-6 lg:col-span-4 mb-8 lg:mb-0">
+        <Copy>
+          <p className="text-xl md:text-2xl text-neutral-100">
             {service.description}
           </p>
         </Copy>
@@ -160,7 +216,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
                 delay: index * 0.025,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`${lcddot.className} text-[10px] text-neutral-100 uppercase tracking-[1.1] bg-neutral-100/10 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap`}
+              className={`${lcddot.className} text-[10px] text-[#B9935B] uppercase tracking-[1.1] bg-[#B9935B]/10 px-2 3xl:px-3 pt-2 pb-1.5 rounded-md whitespace-nowrap`}
             >
               {keyword}
             </motion.li>

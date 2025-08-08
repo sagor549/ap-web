@@ -109,7 +109,7 @@ export default function CTAButton() {
             />
           </div>
 
-          <div className="flex flex-col gap-1.5 md:gap-2 flex-1 min-w-0 relative">
+          <div className="flex flex-col gap-1.5 md:gap-2 flex-1 md:w-[500px] min-w-0 relative">
             <Link
               href="/"
               className="md:text-2xl font-semibold  uppercase" style={{color:"#B9935B"}}
