@@ -198,16 +198,16 @@ useEffect(() => {
       <AuroraBackground>
   
    
-      <div className="container mx-auto px-4 md:px-6 py-30 md:py-12 relative z-10 min-h-screen flex flex-col justify-center ">
+      <div className="container mx-auto px-4 md:px-20 py-30 md:py-12 relative z-10 min-h-screen flex flex-col justify-center md:gap-12 gap-0  ">
         {/* Top Centered Title */}
         <motion.div 
-          className="w-full text-center mb-6 md:mb-12"
+          className="w-full text-center mb-6 md:mb-1"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase" 
+            className="font-bold text-3xl sm:text-4xl md:text-4xl lg:text-5xl  uppercase mt-0 md:mt-12 xl:text-7xl xl:mb-6  " 
             style={{color:"#B9935B"}}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -220,14 +220,14 @@ useEffect(() => {
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Section - Content */}
           <motion.div 
-            className="space-y-6 md:space-y-8 w-full text-center lg:text-left order-2 lg:order-1"
+            className="space-y-6 md:space-y-8 w-full text-center lg:text-left order-2 lg:order-2"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="space-y-4 md:space-y-9">
               <motion.h1 
-                className="text-3xl md:text-4xl lg:text-9xl xl:text-9xl font-bold text-white leading-tight"
+                className="text-3xl md:text-7xl  font-bold text-white "
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -267,7 +267,7 @@ useEffect(() => {
           {/* Right Section - Responsive website image stack */}
           <div className="w-full flex items-center justify-center order-1 lg:order-2 "
                >
-            <div className="relative w-72 md:w-6xl max-w-6xl h-[180px] sm:h-[280px] md:h-[350px] lg:h-[400px] xl:h-[500px]">
+            <div className="relative w-72 md:w-6xl max-w-6xl h-[180px] sm:h-[280px] md:h-[400px] lg:h-[400px] ">
               {/* Stack of all images */}
               {websiteImages.map((image, index) => {
                 const position = getImagePosition(index);

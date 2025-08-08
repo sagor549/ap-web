@@ -1,43 +1,78 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import useDisableScroll from "@/hooks/useDisableScroll";
 
 export default function LoadingScreen() {
-  const [percent, setPercent] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useDisableScroll();
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPercent((prev) => prev + 1);
-    }, 10);
+    // Disable scrolling on mount
+    document.body.style.overflow = "hidden";
+    
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 3000);
 
-    if (percent === 100) {
-      clearInterval(interval);
-      setIsLoading(false);
-    }
-    return () => clearInterval(interval);
-  }, [percent]);
+    return () => {
+      clearTimeout(timer);
+      // Re-enable scrolling when component unmounts
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      animate={isLoading ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ delay: 1 }}
-      className="loading-screen fixed flex items-center justify-center inset-0 z-999 bg-neutral-100  pointer-events-none"
-    >
-      <div className="overflow-hidden">
-        <motion.p
-          animate={!isLoading ? { y: "-100%" } : {}}
-          transition={{ duration: 0.5, delay: 0.5, ease: [0.7, 0, 0.84, 0] }}
-          className="text-sm font-semibold tracking-tight"
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 1 }}
+          exit={{ 
+            opacity: 0,
+            transition: { duration: 0.8, ease: "easeInOut" }
+          }}
+          className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
         >
-          {percent}
-        </motion.p>
-      </div>
-    </motion.div>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ 
+              scale: [0.8, 1.1, 1],
+              opacity: 1,
+              transition: {
+                duration: 0.8,
+                times: [0, 0.5, 1]
+              }
+            }}
+            exit={{ 
+              scale: 0.9,
+              opacity: 0,
+              transition: { duration: 0.5 }
+            }}
+          >
+            <img 
+              src="/images/logo.png" 
+              alt="Logo" 
+              className="w-40 h-40 md:w-52 md:h-52"
+            />
+          </motion.div>
+          
+          {/* Optional subtle pulse effect */}
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ 
+              scale: 1.8,
+              opacity: [0, 0.3, 0],
+              transition: { 
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "loop",
+                delay: 0.5
+              }
+            }}
+            className="absolute rounded-full bg-white/10"
+            style={{ width: "200px", height: "200px" }}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

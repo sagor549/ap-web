@@ -24,7 +24,7 @@ const AuroraBackground = ({
   return (
     <div
       className={cn(
-        "relative flex flex-col bg-zinc-950 w-full overflow-hidden",
+        "relative flex flex-col bg-zinc-950 dark:bg-zinc-900 w-full",
         className
       )}
       {...props}
@@ -33,8 +33,8 @@ const AuroraBackground = ({
         className="absolute inset-0 overflow-hidden"
         style={
           {
-            "--aurora": "repeating-linear-gradient(280deg, #0a0808 30%, #1a1a1d 15%, #2d2828 20%, #1f1c1c 25%, #B9935B 30%)",
-            "--dark-gradient": "repeating-linear-gradient(280deg, #000 0%, #2b2727 7%, transparent 10%, transparent 12%, #000 16%)",
+            "--aurora": "repeating-linear-gradient(100deg, #0a0808 30%, #1a1a1d 15%, #2d2828 20%, #1f1c1c 25%, #B9935B 30%)",
+            "--dark-gradient": "repeating-linear-gradient(100deg, #000 0%, #2b2727 7%, transparent 10%, transparent 12%, #000 16%)",
             "--blue-300": "#454f5a",
             "--blue-400": "#5e6266",
             "--blue-500": "#363d44",
@@ -46,23 +46,24 @@ const AuroraBackground = ({
           } as React.CSSProperties
         }
       >
+        {/* Increased aurora visibility with larger size and higher opacity */}
         <div
           className={cn(
-            `after:animate-aurora pointer-events-none absolute -inset-[12px] opacity-40 blur-[15px] invert filter will-change-transform 
-            [--aurora:repeating-linear-gradient(280deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)] 
-            [--dark-gradient:repeating-linear-gradient(280deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)] 
-            after:absolute after:inset-0 after:mix-blend-difference after:content-[""] after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
+            `after:animate-aurora pointer-events-none absolute -inset-[12px] opacity-40 blur-[15px] invert filter will-change-transform [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)] [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)] after:absolute after:inset-0 after:mix-blend-difference after:content-[""] dark:invert-0 after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
             `[background-image:var(--dark-gradient),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%]`,
             `after:[background-size:200%,_100%] after:[background-attachment:fixed]`,
-            showRadialGradient && `[mask-image:radial-gradient(ellipse_at_100%_100%,black_40%,var(--transparent)_70%)]`,
+            showRadialGradient && `[mask-image:radial-gradient(ellipse_at_100%_0%,black_40%,var(--transparent)_70%)]`,
           )}
         ></div>
         
+        {/* Enhanced grain overlay */}
         <div className="absolute inset-0 pointer-events-none [background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxmaWx0ZXIgaWQ9ImciPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIxLjQiIG51bU9jdGF2ZXM9IjUiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2cpIiBvcGFjaXR5PSIwLjE1Ii8+PC9zdmc+')] mix-blend-soft-light" />
         
-        <div className="absolute inset-0 pointer-events-none [background-image:linear-gradient(to_top,rgba(175, 171, 171, 0.8)_0%,rgba(175, 171, 171, 0.8)_50%,transparent_100%)]" />
+        {/* Top dark gradient */}
+        <div className="absolute inset-0 pointer-events-none [background-image:linear-gradient(to_bottom,rgba(175, 171, 171, 0.8)_0%,rgba(175, 171, 171, 0.8)_50%,transparent_100%)]" />
         
-        <div className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_at_50%_100%,rgba(119, 119, 119, 0.8)_0%,rgba(119, 119, 119, 0.8)_100%)]" />
+         <div className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_at_center,rgba(119, 119, 119, 0.8)_0%,rgba(119, 119, 119, 0.8)_100%)]" />
+        
       </div>
       {children}
     </div>
@@ -122,10 +123,10 @@ export default function TechnologiesLit() {
 
   return (
     <AuroraBackground>
-      <section className="pb-24 px-4 lg:px-8 relative z-10">
+      <section className="pb-20 md:pb-0 px-4 lg:px-8 relative z-10">
         <LetterScroll />
 
-        <h4 className="font-semibold text-4xl md:text-6xl uppercase mb-4 text-[#B9935B] pt-22">
+        <h4 className="font-semibold text-4xl md:text-6xl uppercase mb-4 text-[#B9935B] pt-2">
           Our TechStack
         </h4>
         
@@ -138,12 +139,12 @@ export default function TechnologiesLit() {
         
         <div ref={containerRef} className="relative pt-22">
           <div className="hidden lg:grid grid-rows-2">
-            <div className="grid grid-cols-3 border-b border-neutral-800 h-[clamp(200px,20vw,400px)]">
+            <div className="grid grid-cols-3 border-b border-neutral-100 h-[clamp(200px,20vw,400px)]">
               <a
                 href="https://reactjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit React website"
                 onMouseEnter={() => setHoveredTech("React")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -160,7 +161,7 @@ export default function TechnologiesLit() {
                 href="https://nextjs.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit Next.js website"
                 onMouseEnter={() => setHoveredTech("Next.js")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -197,7 +198,7 @@ export default function TechnologiesLit() {
                 href="https://gsap.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit GSAP website"
                 onMouseEnter={() => setHoveredTech("GSAP")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -214,7 +215,7 @@ export default function TechnologiesLit() {
                 href="https://motion.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit Motion website"
                 onMouseEnter={() => setHoveredTech("Motion One")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -231,7 +232,7 @@ export default function TechnologiesLit() {
                 href="https://tailwindcss.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit TailwindCSS website"
                 onMouseEnter={() => setHoveredTech("Tailwind CSS")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -248,7 +249,7 @@ export default function TechnologiesLit() {
                 href="https://www.contentful.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit Contentful website"
                 onMouseEnter={() => setHoveredTech("Contentful")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -265,7 +266,7 @@ export default function TechnologiesLit() {
                 href="https://supabase.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group cursor-pointer relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group cursor-pointer relative"
                 aria-label="Visit Supabase website"
                 onMouseEnter={() => setHoveredTech("Supabase")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -282,7 +283,7 @@ export default function TechnologiesLit() {
                 href="https://vercel.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="grid-item flex items-center justify-center border-r border-neutral-800 group relative"
+                className="grid-item flex items-center justify-center border-r border-neutral-100 group relative"
                 aria-label="Visit Vercel website"
                 onMouseEnter={() => setHoveredTech("Vercel")}
                 onMouseLeave={() => setHoveredTech(null)}
@@ -321,7 +322,7 @@ export default function TechnologiesLit() {
               href="https://reactjs.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-r border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-r border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit React website"
               onMouseEnter={() => setHoveredTech("React")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -338,7 +339,7 @@ export default function TechnologiesLit() {
               href="https://nextjs.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit Next.js website"
               onMouseEnter={() => setHoveredTech("Next.js")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -355,7 +356,7 @@ export default function TechnologiesLit() {
               href="https://www.typescriptlang.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-r border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-r border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit TypeScript website"
               onMouseEnter={() => setHoveredTech("TypeScript")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -372,7 +373,7 @@ export default function TechnologiesLit() {
               href="https://gsap.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit GSAP website"
               onMouseEnter={() => setHoveredTech("GSAP")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -388,7 +389,7 @@ export default function TechnologiesLit() {
             <a
               href="https://motion.dev/"
               target="_blank"
-              className="grid-item flex items-center justify-center border-r border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-r border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               onMouseEnter={() => setHoveredTech("Motion One")}
               onMouseLeave={() => setHoveredTech(null)}
             >
@@ -404,7 +405,7 @@ export default function TechnologiesLit() {
               href="https://tailwindcss.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit TailwindCSS website"
               onMouseEnter={() => setHoveredTech("Tailwind CSS")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -421,7 +422,7 @@ export default function TechnologiesLit() {
               href="https://www.contentful.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-r border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-r border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit Contentful website"
               onMouseEnter={() => setHoveredTech("Contentful")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -438,7 +439,7 @@ export default function TechnologiesLit() {
               href="https://supabase.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-b border-neutral-800 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-b border-neutral-100 group cursor-pointer h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit Supabase website"
               onMouseEnter={() => setHoveredTech("Supabase")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -455,7 +456,7 @@ export default function TechnologiesLit() {
               href="https://vercel.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center justify-center border-r border-neutral-800 group h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center justify-center border-r border-neutral-100 group h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit Vercel website"
               onMouseEnter={() => setHoveredTech("Vercel")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -472,7 +473,7 @@ export default function TechnologiesLit() {
               href="https://www.figma.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="grid-item flex items-center border-neutral-800 justify-center group h-[clamp(200px,20vw,400px)] relative"
+              className="grid-item flex items-center border-neutral-100 justify-center group h-[clamp(200px,20vw,400px)] relative"
               aria-label="Visit Figma website"
               onMouseEnter={() => setHoveredTech("Figma")}
               onMouseLeave={() => setHoveredTech(null)}
@@ -521,9 +522,9 @@ function LetterScroll() {
   return (
     <ul
       ref={containerRef}
-      className="letter-scroll flex flex-col justify-center items-center h-[500px] lg:h-[800px] py-24"
+      className="letter-scroll flex flex-col justify-center items-center h-[300px] lg:h-[800px] py-24"
     >
-      <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.85] overflow-hidden flex text-[#B9935B]">
+      <li className="text-[clamp(48px,14vw,250px)] font-bold  overflow-hidden flex text-white">
         <span className="letter relative inline-block">
           <span>M</span>
           <span className="absolute bottom-full left-0">M</span>
@@ -549,7 +550,7 @@ function LetterScroll() {
           <span className="absolute bottom-full left-0">N</span>
         </span>
       </li>
-      <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] lg:leading-[0.85] overflow-hidden flex text-[#B9935B]">
+      <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] lg:leading-[0.85] overflow-hidden flex text-white">
         <span className="letter relative inline-block ">
           <span>T</span>
           <span className="absolute bottom-full left-0">T</span>

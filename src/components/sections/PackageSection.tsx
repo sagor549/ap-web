@@ -162,7 +162,7 @@ function PackageSection() {
           </div>
           
           <div>
-            <h3 className="text-2xl lg:text-5xl mb-4  mt-0 md:mt-5" style={{ color: '#B9935B' }}>Who it's for:</h3>
+            <h3 className="text-2xl lg:text-5xl mb-4  mt-0 md:mt-5" style={{ color: '#B9935B' }}>Who it&#39;s for:</h3>
             <ul className="space-y-5 text-lg lg:text-xl text-white">
               <li className="flex items-start gap-3">
                 <span className="text-[#B9935B]">•</span>
@@ -232,11 +232,11 @@ function PackageSection() {
         
         <div className="text-center mt-6 max-w-3xl mx-auto">
           <p className="text-lg lg:text-xl text-white">
-            If your new landing page doesn't hit a 10%+ conversion rate or significantly 
-            outperform your current one within 30 days, we'll optimize it again for free.
+           If your new landing page doesn&#39;t hit a 10%+ conversion rate or significantly 
+  outperform your current one within 30 days, we&#39;ll optimize it again for free.
           </p>
           <p className="text-xl lg:text-2xl mt-4" style={{ color: '#B9935B' }}>
-            Still doesn't hit? You get your money back. No questions. No excuses.
+            Still doesn&#39;t hit? You get your money back. No questions. No excuses.
           </p>
         </div>
       </div>

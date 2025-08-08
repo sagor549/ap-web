@@ -115,8 +115,8 @@ export default function ProjectCard({
           </div>
 
           <div className="flex justify-center items-center h-4 md:h-4.5 overflow-hidden relative w-full">
-            <div className="absolute left-0 h-full w-8 lg:w-10 bg-linear-to-r from-neutral-900/95 to-neutral-200/0 z-10" />
-            <div className="absolute right-0 h-full w-8 lg:w-10 bg-linear-to-l from-neutral-900/95 to-neutral-200/0 z-10" />
+            <div className="absolute left-0 h-full w-8 lg:w-10 bg-linear-to-r  z-10" />
+            <div className="absolute right-0 h-full w-8 lg:w-10 bg-linear-to-l  z-10" />
 
             <div className="flex overflow-hidden">
               <motion.p

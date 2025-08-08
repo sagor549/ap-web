@@ -62,7 +62,7 @@ function ProjectList() {
           delay: isInitialLoad ? 2.8 : 0.8,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className="w-full bg-[#B9935B] rounded-2xl lg:rounded-[20px] p-3 lg:p-4"
+        className="w-full bg-transparent rounded-2xl lg:rounded-[20px] p-3 lg:p-4"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
           {projects.map((project, index) => (

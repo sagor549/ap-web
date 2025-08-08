@@ -28,7 +28,7 @@ export default function Project({ params }: { params: Promise<PageParams> }) {
   }
 
   return (
-    <main className=" px-2 lg:px-4 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
+    <main className=" px-2 lg:px-4 pt-7 ">
       <motion.div
         initial={{ y: "24px", opacity: 0, scale: 0.95 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}

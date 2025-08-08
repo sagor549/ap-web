@@ -126,7 +126,7 @@ const AuroraBackground = ({
 export default function Services() {
   return (
     <AuroraBackground>
-      <section className="px-2 lg:px-4 py-16 lg:py-24 relative z-10">
+      <section className="px-2 lg:px-4  relative z-10">
         <div className="flex flex-col gap-16 lg:gap-16 px-4 pt-16 lg:pt-24 pb-4">
           <div className="flex flex-col">
             <Copy>
@@ -157,14 +157,12 @@ export default function Services() {
 function ServicesList() {
   return (
     <ul className="flex flex-col text-[#B9935B]">
-      {services.map((service, index) => (
-        <ServiceCard key={service.title} service={service} index={index} />
-      ))}
+    
     </ul>
   );
 }
 
-function ServiceCard({ service, index }: { service: Service; index: number }) {
+function ServiceCard({ service, }: { service: Service;  }) {
   const keywordsRef = useRef(null);
   const imageContainerRef = useRef(null);
 

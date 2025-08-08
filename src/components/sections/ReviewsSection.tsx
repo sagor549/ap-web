@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Star, Zap, Target, TrendingUp, Award } from "lucide-react";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { AuroraBackground } from "../ui/aura";
+import { AuroraBackground } from "../ui/aurora-background";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -243,7 +243,7 @@ export default function ReviewsSection() {
     const targetValues = [500, 12.8, 7];
     
     statRefs.forEach((ref, index) => {
-      let counter = { value: 0 };
+      const counter = { value: 0 };
       gsap.to(counter, {
         value: targetValues[index],
         duration: 2,
@@ -327,13 +327,13 @@ export default function ReviewsSection() {
       <section
         ref={sectionRef}
         id="reviews"
-        className="min-h-screen flex flex-col py-24 lg:px-12 relative overflow-hidden"
+        className="min-h-screen flex flex-col py-10 lg:px-12 relative overflow-hidden"
       >
         {/* Animated Headers */}
         <div className="flex flex-col items-center text-center mb-16 max-w-full">
           <div className="mask overflow-hidden">
-            <h2 ref={headerRef1} className="text-4xl md:text-7xl uppercase" style={{ color: 'white' }}>
-              Don't Send Traffic to a
+            <h2 ref={headerRef1} className="text-4xl md:text-6xl uppercase mb-0 md:mb-6" style={{ color: 'white' }}>
+            Don&#39;t Send Traffic to a
             </h2>
           </div>
           <div className="mask overflow-hidden">
@@ -359,11 +359,11 @@ export default function ReviewsSection() {
         {/* Intro Text */}
         <div className="mx-auto text-center mb-20 max-w-3xl px-4">
           <p className="text-xl md:text-2xl text-white mb-8">
-            Pick the Landing Page Lead Booster when you're tired of low conversions and ready to scale.
+Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and ready to scale.
           </p>
           <p className="text-xl md:text-2xl text-[#B9935B] leading-relaxed tracking-normal">
-            We write, build, and optimize the one page that will bring you the biggest ROI of your entire funnel. 
-            It's not magic. It's just better execution—with a hard guarantee to back it up.
+           We write, build, and optimize the one page that will bring you the biggest ROI of your entire funnel.
+  It&#39;s not magic. It&#39;s just better execution—with a hard guarantee to back it up.
           </p>
         </div>
 
@@ -457,7 +457,7 @@ export default function ReviewsSection() {
                     animate={{ scale: 1 }}
                     transition={{ delay: i * 0.1 }}
                   >
-                    <Star className="w-5 h-5 mx-0.5 text-[#B9935B]" />
+                   
                   </motion.div>
                 ))}
               </div>
@@ -480,7 +480,7 @@ export default function ReviewsSection() {
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2 + i * 0.1 }}
                   >
-                    <Star className="w-5 h-5 mx-0.5 text-[#B9935B]" />
+                   
                   </motion.div>
                 ))}
               </div>
@@ -503,7 +503,7 @@ export default function ReviewsSection() {
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.4 + i * 0.1 }}
                   >
-                    <Star className="w-5 h-5 mx-0.5 text-[#B9935B]" />
+                   
                   </motion.div>
                 ))}
               </div>

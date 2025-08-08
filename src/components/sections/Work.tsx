@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageTransition } from "@/constants/pageTransition";
-import { AuroraBackground } from '../ui/aura';
+import { AuroraBackground } from '../ui/aurora-background';
 
 
 export default function Work() {
@@ -69,7 +69,7 @@ export default function Work() {
 
       <Link
         href="/work"
-        className="flex items-center gap-1 group"
+        className="flex items-center gap-1 group z-100"
         onClick={(e) => {
           e.preventDefault();
           router.push("/work", {
@@ -81,7 +81,7 @@ export default function Work() {
           See all
         </span>
 
-        <ArrowRight className="w-6 h-6" />
+        <ArrowRight className="w-6 h-6 text-[#B9935B]" />
       </Link>
     </section>
     </AuroraBackground>

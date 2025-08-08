@@ -102,14 +102,14 @@ function AboutSection() {
       {/* Animated Headers - Centered */}
       <div className="flex flex-col items-center text-center lg:text-left lg:items-start">
         <div className="mask overflow-hidden">
-          <h2 ref={headerRef1} className="text-4xl lg:text-6xl uppercase" style={{ color: 'white' }}>
+          <h2 ref={headerRef1} className="text-4xl lg:text-5xl uppercase" style={{ color: 'white' }}>
             You can have the best ads
           </h2>
         </div>
         <div className="mask overflow-hidden">
           <h2
             ref={headerRef2}
-            className="text-4xl lg:text-6xl uppercase  mt-0 md:mt-5"
+            className="text-4xl lg:text-5xl uppercase  mt-0 md:mt-5"
             style={{ color: '#B9935B' }}
           >
             in the world<span className="text-white">, BUT</span>
@@ -118,7 +118,7 @@ function AboutSection() {
         <div className="mask overflow-hidden">
           <h2 
             ref={headerRef3} 
-            className="text-4xl lg:text-6xl  uppercase   mt-2 text-white   md:mt-5"  
+            className="text-4xl lg:text-5xl  uppercase   mt-2 text-white   md:mt-5"  
            
           >
             your landing  <span className="" style={{ color: '#B9935B' }}> page SUCKS ?
@@ -144,7 +144,8 @@ function AboutSection() {
         <div className="flex flex-col gap-4 max-w-2xl">
           <div className="flex flex-col gap-4">
             <p className="text-lg md:text-4xl bio text-white text-center lg:text-left">
-              <span className="" style={{ color: '#B9935B' }}>You're throwing money in the fire.</span> Our landing pages don't just look pretty—they <span className="" style={{ color: '#B9935B' }}>convert visitors into customers</span>. Fast loading, clean design, and strategic psychology <span className="" style={{ color: '#B9935B' }}>turn clicks into cash</span>. <span className="" style={{ color: '#B9935B' }}>Stop burning ad spend</span> and start building revenue machines.
+              <span className="" style={{ color: '#B9935B' }}>You&#39;re throwing money in the fire.</span> Our landing pages don&#39;t just look pretty—they
+ <span className="" style={{ color: '#B9935B' }}>convert visitors into customers</span>. Fast loading, clean design, and strategic psychology <span className="" style={{ color: '#B9935B' }}>turn clicks into cash</span>. <span className="" style={{ color: '#B9935B' }}>Stop burning ad spend</span> and start building revenue machines.
             </p>
 
             <div className="flex justify-center lg:justify-start">

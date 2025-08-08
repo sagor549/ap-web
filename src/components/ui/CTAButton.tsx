@@ -17,17 +17,22 @@ const navItems = [
   {
     title: "Home",
     href: "/",
-    imageUrl: "/images/pages/home-icon.png",
+    imageUrl: "/images/pages/home.png",
   },
   {
     title: "Work",
     href: "/work",
-    imageUrl: "/images/pages/work-icon.png",
+    imageUrl: "/images/pages/works.png",
   },
   {
     title: "Lab",
     href: "/lab",
-    imageUrl: "/images/pages/lab-icon.png",
+    imageUrl: "/images/pages/lab.png",
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+    imageUrl: "/images/pages/contact.png",
   },
 ];
 
@@ -165,10 +170,10 @@ function Slider() {
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
         >
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6 `}>
-            Modern Website Building, Web Animations, Landing Page Building, 
+            Modern Website Building, Web Animations, Landing Page Building,  Saas Builder,
           </p>
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
-            Modern Web Developer, Web Animator, Saas Builder, Next.js Dev,
+            Modern Web Developer, Web Animator, Saas Builder, Landing Page Building,
           </p>
         </motion.div>
 
@@ -180,10 +185,10 @@ function Slider() {
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
         >
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
-            Modern Website Building, Web Animations, Landing Page Building, 
+           Modern Website Building, Web Animations, Landing Page Building,  Saas Builder,
           </p>
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
-            Modern Web Developer, Web Animator, Saas Builder, Next.js Dev,
+          Modern Website Building, Web Animations, Landing Page Building,  Saas Builder,
           </p>
         </motion.div>
       </div>
@@ -243,7 +248,7 @@ function NavItem({
           src={imageUrl}
           alt={title}
           fill
-          className="object-cover object-center scale-110 group-hover:scale-100 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+          className=" object-contain scale-110 group-hover:scale-100 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
         />
       </motion.div>
       <div className="overflow-hidden h-8">
