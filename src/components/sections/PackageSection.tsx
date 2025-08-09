@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { Check } from 'lucide-react';
 import { cn } from "../../lib/utlis";
+import React, { useState, useEffect } from "react";
+
 
 function PackageSection() {
   const headerRef1 = useRef(null);
@@ -286,6 +288,21 @@ const AuroraBackground = ({
   showRadialGradient = true,
   ...props
 }: AuroraBackgroundProps) => {
+  
+    const [isMobile, setIsMobile] = useState(false);
+        const [isLoaded, setIsLoaded] = useState(false);
+        useEffect(() => {
+            // Detect mobile devices
+            const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+            setIsMobile(isMobileDevice);
+            
+            // Mark as loaded after initial render
+            const timer = setTimeout(() => setIsLoaded(true), 100);
+            return () => clearTimeout(timer);
+          }, []);
+        
+          // Simplified gradient for mobile
+          const mobileGradient = "linear-gradient(250deg, #1a1a1d 0%, #0a0808 30%, #2d2828 60%, #1f1c1c 80%, #B9935B 100%)"
   return (
     <div
       className={cn(
@@ -299,7 +316,9 @@ const AuroraBackground = ({
         style={
           {
             // Update gradient direction to start from bottom (280deg instead of 100deg)
-            "--aurora": "repeating-linear-gradient(280deg, #0a0808 30%, #1a1a1d 15%, #2d2828 20%, #1f1c1c 25%, #B9935B 30%)",
+            "--aurora":isMobile 
+              ? mobileGradient
+              : "repeating-linear-gradient(280deg, #0a0808 30%, #1a1a1d 15%, #2d2828 20%, #1f1c1c 25%, #B9935B 30%)",
             "--dark-gradient": "repeating-linear-gradient(280deg, #000 0%, #2b2727 7%, transparent 10%, transparent 12%, #000 16%)",
             "--blue-300": "#454f5a",
             "--blue-400": "#5e6266",
@@ -322,13 +341,15 @@ const AuroraBackground = ({
             `[background-image:var(--dark-gradient),var(--aurora)] [background-size:300%,_200%] [background-position:50%_50%,50%_50%]`,
             `after:[background-size:200%,_100%] after:[background-attachment:fixed]`,
             // Move radial mask to bottom
+             !isMobile && `after:animate-aurora`,
             showRadialGradient && `[mask-image:radial-gradient(ellipse_at_100%_100%,black_40%,var(--transparent)_70%)]`,
           )}
         ></div>
         
         {/* Grain overlay remains same */}
+          {!isMobile && (
         <div className="absolute inset-0 pointer-events-none [background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxmaWx0ZXIgaWQ9ImciPjxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIxLjQiIG51bU9jdGF2ZXM9IjUiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48ZmVDb2xvck1hdHJpeCB0eXBlPSJzYXR1cmF0ZSIgdmFsdWVzPSIwIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI2cpIiBvcGFjaXR5PSIwLjE1Ii8+PC9zdmc+')] mix-blend-soft-light" />
-        
+         )}
         {/* Flipped gradient to darken bottom instead of top */}
         <div className="absolute inset-0 pointer-events-none [background-image:linear-gradient(to_top,rgba(175, 171, 171, 0.8)_0%,rgba(175, 171, 171, 0.8)_50%,transparent_100%)]" />
         
@@ -336,7 +357,9 @@ const AuroraBackground = ({
         <div className="absolute inset-0 pointer-events-none [background:radial-gradient(ellipse_at_50%_100%,rgba(119, 119, 119, 0.8)_0%,rgba(119, 119, 119, 0.8)_100%)]" />
         
       </div>
-      {children}
+<div className={`relative z-10 transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        {children}
+      </div>
     </div>
   );
 };
