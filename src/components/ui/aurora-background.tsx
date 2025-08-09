@@ -53,7 +53,7 @@ export const AuroraBackground = ({
             "--indigo-300": "#7d829b",
             "--violet-200": "#B9935B",
             "--black": "#000000",
-            "--white": "#f7eeee",
+            "--white": "#b8b1b1",
             "--transparent": "transparent",
           } as React.CSSProperties
         }

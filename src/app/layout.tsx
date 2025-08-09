@@ -11,7 +11,7 @@ import { metadata } from "./metadata";
 import FooterWrapper from "@/components/layout/FooterWrapper";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import { InitialLoadProvider } from "@/contexts/initial-load-context";
-
+import { AuroraBackground } from "@/components/ui/aura";
 export { metadata };
 
 export default function RootLayout({
@@ -30,14 +30,17 @@ export default function RootLayout({
           <InitialLoadProvider>
             <FooterProvider>
               <body
-                className={`${saans.className} antialiased bg-neutral-900 text-neutral-900`}
+                className={`${saans.className} antialiased  text-neutral-900 bg-zinc-950 dark:bg-zinc-900`}
               >
+               
                 <LoadingScreen />
                 <DocumentTitleChanger />
+                 <AuroraBackground  >
                 <CTAButton />
                 {children}
                 <FooterWrapper />
                 <Analytics />
+                </AuroraBackground>
               </body>
             </FooterProvider>
           </InitialLoadProvider>

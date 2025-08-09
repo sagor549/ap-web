@@ -4,14 +4,14 @@ import { motion } from "motion/react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ui/ProjectCard";
 import useInitialLoad from "@/contexts/initial-load-context";
-import { AuroraBackground } from '../../components/ui/aurora-background';
+
 
 export default function Work() {
   const { isInitialLoad } = useInitialLoad();
 
   return (
     <main className="">
-      <AuroraBackground>
+     
       <div className="px-4 lg:px-8 pt-[200px] md:pt-30">
         <div className="overflow-hidden mb-3 lg:mb-5">
           <motion.p
@@ -44,7 +44,7 @@ export default function Work() {
       </div>
 
       <ProjectList />
-            </AuroraBackground>
+            
     </main>
   );
 }

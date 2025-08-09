@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { AuroraBackground } from '../ui/aura';
+
 import Link from "next/link";
 
 
@@ -195,10 +195,10 @@ useEffect(() => {
 
   return (
   <div>
-      <AuroraBackground>
+      
   
    
-      <div className="container mx-auto px-4 md:px-20 py-30 md:py-12 relative z-10 min-h-screen flex flex-col justify-center md:gap-12 gap-0  ">
+      <div className="container mx-auto px-4 md:px-20 py-30 md:py-12 relative z-10 min-h-screen flex flex-col justify-center md:gap-12 gap-0   ">
         {/* Top Centered Title */}
         <motion.div 
           className="w-full text-center mb-6 md:mb-1"
@@ -357,7 +357,7 @@ useEffect(() => {
       
        
       </div>
-       </AuroraBackground>
+      
    </div>
   );
 };

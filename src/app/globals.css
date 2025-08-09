@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 @theme {
   --breakpoint-3xl: 1700px;
 }
@@ -9,6 +10,7 @@ body.loading-screen-active {
   height: 100vh;
   position: fixed;
   width: 100%;
+
 }
 
 html{

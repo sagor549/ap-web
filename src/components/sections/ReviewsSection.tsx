@@ -56,7 +56,7 @@ const AnimatedTestimonials = ({
   };
 
   return (
-    <div className="mx-auto max-w-sm px-4 py-10 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
+    <div className="mx-auto max-w-sm px-4 py-1 md:py-10 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
         <div>
           <div className="relative h-80 w-full">
@@ -102,7 +102,7 @@ const AnimatedTestimonials = ({
             </AnimatePresence>
           </div>
         </div>
-        <div className="flex flex-col justify-between py-4">
+        <div className="flex flex-col justify-between py-0 md:py-10">
           <motion.div
             key={active}
             initial={{
@@ -408,7 +408,7 @@ Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and 
 
         {/* Overall Rating */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-4 bg-gradient-to-r from-[#0d0d0d] to-[#1a1a1a] rounded-full px-8 py-4 border border-[#2a2a2a] shadow-lg">
+          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-[#0d0d0d] to-[#1a1a1a] rounded-full px-8 py-4 border border-[#2a2a2a] shadow-lg">
             <div className="flex space-x-1">
               {Array(5).fill(0).map((_, i) => (
                 <motion.div
@@ -423,7 +423,7 @@ Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and 
                 </motion.div>
               ))}
             </div>
-            <span className="text-2xl font-bold text-white">4.9/5</span>
+            <span className="text-xl font-bold text-white">4.9/5</span>
             <span className="text-gray-300">from 247+ clients</span>
             <motion.div
               animate={{ rotate: [0, 15, 0] }}

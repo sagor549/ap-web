@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Ap Agency | Web Developemnt | Software Engineer",
+  title: "Ap Agency | Web Developemnt ",
   description: "Ap Agency",
 
   // Basic SEO

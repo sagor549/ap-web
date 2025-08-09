@@ -13,7 +13,7 @@ import ReviewsSection from "@/components/sections/ReviewsSection";
 
 export default function Home() {
   return (
-    <main className="bg-neutral-100">
+    <main className="">
       <HeroSection/>
       
       <AboutSection/>

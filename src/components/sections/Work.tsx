@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageTransition } from "@/constants/pageTransition";
-import { AuroraBackground } from '../ui/aurora-background';
+
 
 
 export default function Work() {
@@ -21,7 +21,7 @@ export default function Work() {
   const router = useTransitionRouter();
 
   return (
-    <AuroraBackground showRadialGradient>
+   
     <section
       ref={sectionRef}
       className="flex flex-col items-center py-28 px-4 lg:px-8 "
@@ -84,6 +84,6 @@ export default function Work() {
         <ArrowRight className="w-6 h-6 text-[#B9935B]" />
       </Link>
     </section>
-    </AuroraBackground>
+   
   );
 }
