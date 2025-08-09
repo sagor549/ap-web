@@ -11,7 +11,9 @@ body.loading-screen-active {
   width: 100%;
 }
 
-
+html {
+  scroll-behavior: smooth;
+}
 
 @layer base {
   * {

@@ -23,9 +23,13 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <ReactLenis root options={{ 
-          lerp: 0.1,
-          
-          touchMultiplier: 1.5,
+           lerp: 0.1,
+    touchMultiplier: 1.5,
+   
+    smoothWheel: true,    // for wheel smoothing
+    syncTouch: true,       // if you want native-like touch inertia
+    touchInertiaMultiplier: 35
+        
           
         }}>
           <InitialLoadProvider>
