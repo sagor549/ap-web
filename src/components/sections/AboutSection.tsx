@@ -5,8 +5,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import { cn } from "../../lib/utlis";
-import React, { useState, useEffect } from "react";
+
 
 function AboutSection() {
   const headerRef1 = useRef(null);

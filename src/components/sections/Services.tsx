@@ -9,7 +9,7 @@ import { lcddot } from "@/fonts";
 import Image from "next/image";
 import Copy from "@/components/layout/Copy";
 
-import React, { useState, useEffect } from "react";
+
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 type Service = {
