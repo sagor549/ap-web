@@ -14,6 +14,36 @@ body.loading-screen-active {
 html {
   scroll-behavior: smooth;
 }
+/* Hardware acceleration for animations */
+.animate-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation intensity */
+  * {
+    transition-duration: 0.3s !important;
+    animation-duration: 0.5s !important;
+  }
+  
+  /* Disable complex animations */
+  .no-mobile-animation {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Scroll locking */
+.loading-screen-active {
+  overflow: hidden !important;
+  touch-action: none !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+}
 
 @layer base {
   * {
