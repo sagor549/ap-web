@@ -11,32 +11,28 @@ body.loading-screen-active {
   width: 100%;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-/* Hardware acceleration for animations */
-.animate-gpu {
-  transform: translate3d(0, 0, 0);
+/* globals.css */
+/* Animation performance */
+* {
+  transform-style: preserve-3d;
   backface-visibility: hidden;
-  perspective: 1000px;
 }
 
-/* Mobile-specific optimizations */
+/* Mobile animation optimization */
 @media (max-width: 768px) {
-  /* Reduce animation intensity */
   * {
-    transition-duration: 0.3s !important;
     animation-duration: 0.5s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.3s !important;
   }
   
-  /* Disable complex animations */
-  .no-mobile-animation {
+  .disable-mobile-animation {
     animation: none !important;
     transition: none !important;
   }
 }
 
-/* Scroll locking */
+/* Scroll lock */
 .loading-screen-active {
   overflow: hidden !important;
   touch-action: none !important;

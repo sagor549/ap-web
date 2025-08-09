@@ -23,10 +23,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <ReactLenis root options={{ 
-lerp: 0.08,
-  wheelMultiplier: 0.8,
-  touchMultiplier: 1.5,
-  
+
         
           
         }}>
