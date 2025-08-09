@@ -11,10 +11,7 @@ body.loading-screen-active {
   width: 100%;
 }
 
-/* Remove this once you've updated the code */
-body {
-  overflow: auto;
-}
+
 
 @layer base {
   * {

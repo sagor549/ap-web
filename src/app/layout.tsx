@@ -22,17 +22,20 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <ReactLenis root>
+        <ReactLenis root options={{ 
+          lerp: 0.1,
+          
+          touchMultiplier: 1.5,
+          
+        }}>
           <InitialLoadProvider>
             <FooterProvider>
               <body
-                className={`${saans.className} antialiased bg-neutral-900 text-neutral-900 overscroll-none`}
+                className={`${saans.className} antialiased bg-neutral-900 text-neutral-900`}
               >
                 <LoadingScreen />
                 <DocumentTitleChanger />
                 <CTAButton />
-               
-                
                 {children}
                 <FooterWrapper />
                 <Analytics />
