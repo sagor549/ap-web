@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { Check } from 'lucide-react';
 
-import React, { useState, useEffect } from "react";
+
 
 
 
