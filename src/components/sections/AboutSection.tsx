@@ -132,7 +132,7 @@ function AboutSection() {
         {/* Image Container */}
         <div className="relative w-full max-w-2xl h-60 lg:h-96 rounded-lg overflow-hidden">
           <Image
-            src="/images/lab/01.png"
+            src="/images/ss.png"
             alt="Conversion rate skyrocketing"
             fill
             className="object-center object-cover"
