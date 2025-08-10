@@ -92,13 +92,7 @@ export default function ProjectCard({
         <div className="flex flex-col gap-4 lg:gap-5 px-3 lg:px-4">
           <div className="flex justify-between items-center w-full relative">
             <div className="flex items-center gap-2 lg:gap-3">
-              <Image
-                src={project.icon}
-                alt={project.title}
-                width={32}
-                height={32}
-                className="w-6 h-6 lg:w-8 lg:h-8 rounded-full"
-              ></Image>
+             
               <p className="text-[clamp(14px,1.2vw,18px)] uppercase font-semibold text-neutral-100 tracking-wide">
                 {project.title}
               </p>

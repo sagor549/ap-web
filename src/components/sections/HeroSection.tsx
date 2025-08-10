@@ -34,38 +34,44 @@ useEffect(() => {
   }, []);
 
 
-  const websiteImages: WebsiteImage[] = [
-    {
-      id: 1,
-      title: "3XSR STUDIO",
-      url: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=600&fit=crop&crop=top",
-      alt: "Recording Studio Website"
-    },
-    {
-      id: 2,
-      title: "CREATIVE AGENCY",
-      url: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=600&fit=crop&crop=top",
-      alt: "Creative Agency Website"
-    },
-    {
-      id: 3,
-      title: "TECH STARTUP",
-      url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=600&fit=crop&crop=top",
-      alt: "Tech Startup Website"
-    },
-    {
-      id: 4,
-      title: "E-COMMERCE",
-      url: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=600&fit=crop&crop=top",
-      alt: "E-commerce Website"
-    },
-    {
-      id: 5,
-      title: "RESTAURANT",
-      url: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=600&fit=crop&crop=top",
-      alt: "Restaurant Website"
-    }
-  ];
+ const websiteImages: WebsiteImage[] = [
+  {
+    id: 1,
+    title: "3XSR",
+    url: "/3xr/1.png",
+    alt: "Portfolio website for 3XSR"
+  },
+  {
+    id: 2,
+    title: "AP Video Ad Agency",
+    url: "/video/1.png",
+    alt: "Services website for AP Video Ad Agency"
+  },
+  {
+    id: 3,
+    title: "Brass Knuckles",
+    url: "/ecom/1.png",
+    alt: "E-commerce website for Brass Knuckles"
+  },
+  {
+    id: 4,
+    title: "Balanced Pitch",
+    url: "/music/1.png",
+    alt: "Music website for Balanced Pitch"
+  },
+  {
+    id: 5,
+    title: "AP Merchandise",
+    url: "/mer/1.png",
+    alt: "Landing page for AP Merchandise"
+  },
+  {
+    id: 6,
+    title: "Toronto Delivery Company",
+    url: "/tdg/1.png",
+    alt: "Services website for Toronto Delivery Company"
+  }
+];
 
   // Auto-loop functionality
   useEffect(() => {
