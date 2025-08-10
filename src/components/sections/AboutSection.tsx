@@ -96,7 +96,7 @@ function AboutSection() {
    
     <section
       id="about"
-      className="min-h-[100dvh] text-bridal-health flex flex-col justify-center px-4 py-20 lg:px-12 relative overflow-hidden"
+      className="min-h-[100dvh] text-bridal-health flex flex-col justify-center px-4 py-5  lg:px-12 relative overflow-hidden"
       
     >
       {/* Animated Headers - Centered */}

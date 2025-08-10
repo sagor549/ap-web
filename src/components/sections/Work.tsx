@@ -4,11 +4,12 @@ import { motion, useInView } from "motion/react";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ui/ProjectCard";
 import Copy from "../layout/Copy";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { pageTransition } from "@/constants/pageTransition";
+
 import { useRef } from "react";
 import { useTransitionRouter } from "next-view-transitions";
-import { pageTransition } from "@/constants/pageTransition";
+
+import { Zap } from "lucide-react";
 
 
 
@@ -24,12 +25,12 @@ export default function Work() {
    
     <section
       ref={sectionRef}
-      className="flex flex-col items-center py-28 px-4 lg:px-8 "
+      className="flex flex-col items-center py-24 px-4 lg:px-8 "
     >
       <h2 className="flex justify-between w-full mb-6 lg:mb-8">
         <Copy>
           <span className="text-4xl md:text-7xl uppercase text-[#B9935B]">
-            Our Works
+            Our Work
           </span>
         </Copy>
         <Copy delay={0.2}>
@@ -67,22 +68,35 @@ export default function Work() {
         </motion.li>
       </ul>
 
-      <Link
-        href="/work"
-        className="flex items-center gap-1 group z-100"
-        onClick={(e) => {
-          e.preventDefault();
-          router.push("/work", {
-            onTransitionReady: pageTransition,
-          });
-        }}
-      >
-        <span className="text-4xl md:text-7xl uppercase text-[#B9935B]">
-          See all
-        </span>
+       <div className="flex justify-center relative top-12">
+        <motion.button
+          whileHover={{ 
+            scale: 1.05,
+            backgroundColor: "#B9935B",
+            color: "#0a0a0a"
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="flex items-center gap-3 text-sm lg:text-xl uppercase px-8 py-4 transition-all border border-[#B9935B] font-bold"
+          style={{ 
+            backgroundColor: 'transparent',
+            color: '#B9935B'
+          }}
+         onClick={(e) => {
+                      e.preventDefault();
+                     
+                      router.push("/work", { onTransitionReady: pageTransition });
+                    }} 
+        >
+          <motion.div
+            animate={{ rotate: [0, 15, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+          >
+            <Zap className="w-5 h-5" fill="#B9935B" />
+          </motion.div>
+          See All {/* Removed Link component */}
+        </motion.button>
+      </div>
 
-        <ArrowRight className="w-6 h-6 text-[#B9935B]" />
-      </Link>
     </section>
    
   );

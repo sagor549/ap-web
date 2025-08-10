@@ -9,7 +9,6 @@ import { lcddot } from "@/fonts";
 import Image from "next/image";
 import Copy from "@/components/layout/Copy";
 
-
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 type Service = {
@@ -64,47 +63,41 @@ const services = [
   },
 ];
 
-
-
-
 export default function Services() {
   return (
-   
-      <section className="px-2 lg:px-4  relative z-10">
-        <div className="flex flex-col gap-16 lg:gap-16 px-4 pt-16 lg:pt-24 pb-4">
-          <div className="flex flex-col">
-            <Copy>
-              <h2 className="text-5xl md:text-7xl text-white uppercase mb-4 text-center">
-                Our Services
-              </h2>
-            </Copy>
-            <Copy>
-              <p className="text-neutral-100 text-3xl md:text-4xl text-center max-w-4xl mx-auto">
-                We transform <span className="text-[#B9935B]">digital visions</span> into 
-                high-performing websites and landing pages. Through our 
-                <span className="text-[#B9935B]"> strategic approach</span>, we create 
-                <span className="text-[#B9935B]"> measurable results</span> that drive growth 
-                and establish <span className="text-[#B9935B]">digital excellence</span>.
-              </p>
-            </Copy>
-          </div>
-
-          <div className="flex flex-col bg-black/20 backdrop-blur-sm rounded-xl lg:rounded-2xl px-4 lg:px-5 text-[#B9935B] border border-neutral-700">
-            <ServicesList />
-          </div>
+    <section className="px-2 lg:px-4 relative z-10">
+      <div className="flex flex-col gap-16 lg:gap-16 px-4 pt-16 lg:pt-24 pb-4">
+        <div className="flex flex-col">
+          <Copy>
+            <h2 className="text-5xl md:text-7xl text-white uppercase mb-4 text-center">
+              Our Services
+            </h2>
+          </Copy>
+          <Copy>
+            <p className="text-neutral-100 text-3xl md:text-4xl text-center max-w-4xl mx-auto">
+              We transform <span className="text-[#B9935B]">digital visions</span> into 
+              high-performing websites and landing pages. Through our 
+              <span className="text-[#B9935B]"> strategic approach</span>, we create 
+              <span className="text-[#B9935B]"> measurable results</span> that drive growth 
+              and establish <span className="text-[#B9935B]">digital excellence</span>.
+            </p>
+          </Copy>
         </div>
-      </section>
-   
+
+        <div className="flex flex-col bg-black/20 backdrop-blur-sm rounded-xl lg:rounded-2xl px-4 lg:px-5 text-[#B9935B] border border-neutral-700">
+          <ServicesList />
+        </div>
+      </div>
+    </section>
   );
 }
 
 function ServicesList() {
   return (
     <ul className="flex flex-col text-[#B9935B]">
-     {services.map((service) => (
-  <ServiceCard key={service.title} service={service} />
-))}
-
+      {services.map((service) => (
+        <ServiceCard key={service.title} service={service} />
+      ))}
     </ul>
   );
 }
@@ -112,6 +105,7 @@ function ServicesList() {
 function ServiceCard({ service }: { service: Service }) {
   const keywordsRef = useRef(null);
   const imageContainerRef = useRef(null);
+  const titleRef = useRef(null);
 
   const isKeywordsInView = useInView(keywordsRef, {
     once: true,
@@ -130,15 +124,19 @@ function ServiceCard({ service }: { service: Service }) {
   const y = useTransform(scrollYProgress, [0, 1], ["-3vh", "3vh"]);
 
   return (
-    <li className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 pt-10 last:pb-4 not-last:pb-10 lg:last:pb-10 not-last:border-b not-last:border-neutral-700">
-      <div className="lg:col-span-5 mb-6 lg:mb-0">
-        <Copy>
-          <h3 className="text-4xl md:text-5xl font-medium text-[#B9935B]">
-            {service.title}
-          </h3>
-        </Copy>
+    <li className="flex flex-col lg:grid lg:grid-cols-12 lg:gap-8 pt-10 last:pb-4 not-last:pb-10 lg:last:pb-8 not-last:border-b not-last:border-neutral-700">
+      {/* Title Section - Increased column span and adjusted layout */}
+      <div className="lg:col-span-5 mb-6 lg:mb-0 min-h-[4rem]">
+        <div ref={titleRef} className="h-full">
+          <Copy>
+            <h3 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-medium text-[#B9935B] leading-tight">
+              {service.title}
+            </h3>
+          </Copy>
+        </div>
       </div>
 
+      {/* Content Section */}
       <div className="flex flex-col gap-4 lg:gap-6 lg:col-span-4 mb-8 lg:mb-0">
         <Copy>
           <p className="text-xl md:text-2xl text-neutral-100">
@@ -169,10 +167,11 @@ function ServiceCard({ service }: { service: Service }) {
         </ul>
       </div>
 
+      {/* Image Section - Reduced height for better text visibility */}
       <motion.div className="lg:col-span-3">
         <div
           ref={imageContainerRef}
-          className="h-[220px] sm:h-[400px] md:h-[450px] lg:h-[clamp(220px,15vw,360px)] rounded-lg overflow-hidden relative"
+          className="h-[220px] sm:h-[400px] md:h-[450px] lg:h-[clamp(220px,15vw,320px)] rounded-lg overflow-hidden relative"
         >
           <motion.div
             className="absolute inset-0 w-full h-[120%] lg:-top-[10%]"
@@ -193,6 +192,7 @@ function ServiceCard({ service }: { service: Service }) {
               alt={service.title}
               fill
               className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 33vw"
             />
           </motion.div>
         </div>

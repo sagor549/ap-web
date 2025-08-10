@@ -105,14 +105,17 @@ export default function CTAButton() {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-0 md:gap-5">
-         <div className="h-[106px] w-[106px] md:h-[125px] md:w-[125px] -my-7 -ml-1 md:ml-0 overflow-y-visible relative">
-            <Image 
-              src="/images/logo.png" 
-              alt="Logo" 
-              fill
-              className="object-cover overflow-y-visible"
-            />
-          </div>
+        
+<Link href="/" className="block">
+  <div className="h-[106px] w-[106px] md:h-[125px] md:w-[125px] -my-7 -ml-1 md:ml-0 overflow-y-visible relative">
+    <Image
+      src="/images/logo.png"
+      alt="Logo"
+      fill
+      className="object-cover overflow-y-visible"
+    />
+  </div>
+</Link>
 
           <div className="flex flex-col gap-1.5 md:gap-2 flex-1 md:w-[500px] min-w-0 relative">
             <Link
@@ -170,10 +173,10 @@ function Slider() {
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
         >
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6 `}>
-            Modern Website Building, Web Animations, Landing Page Building,  Saas Builder,
+            Modern Website Building, Web Animations, Landing Page Building,  Saas Building,
           </p>
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
-            Modern Web Developer, Web Animator, Saas Builder, Landing Page Building,
+           Modern Website Building, Web Animations, Landing Page Building,  Saas Building,
           </p>
         </motion.div>
 
@@ -185,10 +188,10 @@ function Slider() {
           transition={{ duration: 32, ease: "linear", repeat: Infinity }}
         >
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
-           Modern Website Building, Web Animations, Landing Page Building,  Saas Builder,
+           Modern Website Building, Web Animations, Landing Page Building,  Saas Building,
           </p>
           <p className={`${lcddot.className} text-[10px] md:text-xs tracking-widest text-neutral-300 uppercase whitespace-nowrap pr-6`}>
-          Modern Website Building, Web Animations, Landing Page Building,  Saas Builder,
+          Modern Website Building, Web Animations, Landing Page Building,  Saas Building,
           </p>
         </motion.div>
       </div>

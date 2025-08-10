@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Star, Zap, Target, TrendingUp, Award } from "lucide-react";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { AuroraBackground } from "../ui/aurora-background";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,10 +57,10 @@ const AnimatedTestimonials = ({
   };
 
   return (
-    <div className="mx-auto max-w-sm px-4 py-1 md:py-10 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
+    <div className="mx-auto max-w-sm px-4 py-1 md:py-16 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
+      <div className="relative grid grid-cols-1 gap-10 md:gap-20 md:grid-cols-2">
         <div>
-          <div className="relative h-80 w-full">
+          <div className="relative h-64 md:h-80 w-full">
             <AnimatePresence>
               {testimonials.map((testimonial, index) => (
                 <motion.div
@@ -131,7 +132,7 @@ const AnimatedTestimonials = ({
             <p className="text-[#B9935B] text-sm">
               {testimonials[active].designation}
             </p>
-            <motion.p className="mt-8 text-lg text-gray-300">
+            <motion.p className="mt-6 text-base md:text-lg text-gray-300">
               {testimonials[active].quote.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -157,7 +158,7 @@ const AnimatedTestimonials = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
+          <div className="flex gap-4 pt-10 md:pt-0">
             <button
               onClick={handlePrev}
               className="group/button flex h-10 w-10 items-center justify-center rounded-full border border-[#B9935B] bg-transparent"
@@ -178,10 +179,6 @@ const AnimatedTestimonials = ({
 };
 
 export default function ReviewsSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const headerRef1 = useRef<HTMLHeadingElement>(null);
-  const headerRef2 = useRef<HTMLHeadingElement>(null);
-  const headerRef3 = useRef<HTMLHeadingElement>(null);
   const icon1Ref = useRef<HTMLDivElement>(null);
   const icon2Ref = useRef<HTMLDivElement>(null);
   const icon3Ref = useRef<HTMLDivElement>(null);
@@ -192,25 +189,6 @@ export default function ReviewsSection() {
   const stat3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Header animations
-    const headers = [
-      { ref: headerRef1, end: "top 80%" },
-      { ref: headerRef2, end: "top 70%" },
-      { ref: headerRef3, end: "top 60%" },
-    ];
-
-    headers.forEach(header => {
-      gsap.from(header.ref.current, {
-        scrollTrigger: {
-          trigger: header.ref.current,
-          start: "top 100%",
-          end: header.end,
-          scrub: true,
-        },
-        y: "100%",
-      });
-    });
-
     // Icon animations
     gsap.to(icon1Ref.current, {
       y: 20,
@@ -325,51 +303,42 @@ export default function ReviewsSection() {
   return (
     <AuroraBackground>
       <section
-        ref={sectionRef}
         id="reviews"
-        className="min-h-screen flex flex-col py-10 lg:px-12 relative overflow-hidden"
+        className="min-h-screen flex flex-col pt-24 pb-10 lg:px-12 relative overflow-hidden"
       >
-        {/* Animated Headers */}
-        <div className="flex flex-col items-center text-center mb-16 max-w-full">
-          <div className="mask overflow-hidden">
-            <h2 ref={headerRef1} className="text-4xl md:text-6xl uppercase mb-0 md:mb-6" style={{ color: 'white' }}>
+        {/* Static Headers - No Animations */}
+        <div className="flex flex-col items-center text-center mb-12 max-w-full px-4">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl uppercase" style={{ color: 'white' }}>
             Don&#39;t Send Traffic to a
-            </h2>
-          </div>
-          <div className="mask overflow-hidden">
-            <h2
-              ref={headerRef2}
-              className="text-4xl lg:text-6xl uppercase"
-              style={{ color: '#B9935B' }}
-            >
-              Glorified Brochure <span className="text-white"></span>
-            </h2>
-          </div>
-          <div className="mask overflow-hidden">
-            <h2 
-              ref={headerRef3} 
-              className="text-4xl lg:text-6xl uppercase mt-4"  
-              style={{ color: 'white' }}
-            >
-              Send it to a <span className="text-white">Buying Machine</span>
-            </h2>
-          </div>
+          </h2>
+          <h2
+            className="text-3xl md:text-5xl lg:text-6xl uppercase mt-2 md:mt-4"
+            style={{ color: '#B9935B' }}
+          >
+            Glorified Brochure
+          </h2>
+          <h2 
+            className="text-3xl md:text-5xl lg:text-6xl uppercase mt-2 md:mt-4"  
+            style={{ color: 'white' }}
+          >
+            Send it to a Buying Machine
+          </h2>
         </div>
 
         {/* Intro Text */}
-        <div className="mx-auto text-center mb-20 max-w-3xl px-4">
-          <p className="text-xl md:text-2xl text-white mb-8">
-Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and ready to scale.
+        <div className="mx-auto text-center mb-16 max-w-3xl px-4">
+          <p className="text-lg md:text-xl text-white mb-6">
+            Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and ready to scale.
           </p>
-          <p className="text-xl md:text-2xl text-[#B9935B] leading-relaxed tracking-normal">
-           We write, build, and optimize the one page that will bring you the biggest ROI of your entire funnel.
-  It&#39;s not magic. It&#39;s just better execution—with a hard guarantee to back it up.
+          <p className="text-lg md:text-xl text-[#B9935B] leading-relaxed">
+            We write, build, and optimize the one page that will bring you the biggest ROI of your entire funnel.
+            It&#39;s not magic. It&#39;s just better execution—with a hard guarantee to back it up.
           </p>
         </div>
 
-        {/* Benefits Section - Elegant Minimalist */}
-        <div className="max-w-5xl mx-auto mb-20 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Benefits Section */}
+        <div className="max-w-5xl mx-auto mb-16 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
@@ -377,7 +346,7 @@ Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="text-center"
+                className="text-center px-4"
               >
                 <motion.div 
                   whileHover={{ scale: 1.1 }}
@@ -385,136 +354,98 @@ Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and 
                 >
                   {benefit.icon}
                 </motion.div>
-                <motion.h3 
-                  className="text-xl font-bold text-white mb-3"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
+                <h3 
+                  className="text-lg md:text-xl font-bold text-white mb-3"
                 >
                   {benefit.title}
-                </motion.h3>
-                <motion.p
-                  className="text-gray-300"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
+                </h3>
+                <p
+                  className="text-gray-300 text-sm md:text-base"
                 >
                   {benefit.description}
-                </motion.p>
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
 
         {/* Overall Rating */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-[#0d0d0d] to-[#1a1a1a] rounded-full px-8 py-4 border border-[#2a2a2a] shadow-lg">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-[#0d0d0d] to-[#1a1a1a] rounded-full px-6 py-3 border border-[#2a2a2a] shadow-lg">
             <div className="flex space-x-1">
               {Array(5).fill(0).map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0.8, rotate: -10 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: i * 0.1, type: "spring" }}
-                >
+                <div key={i}>
                   <Star
-                    className={`w-6 h-6 ${i < 5 ? "text-[#B9935B] fill-current" : "text-gray-500"}`}
+                    className={`w-5 h-5 text-[#B9935B] fill-current`}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
-            <span className="text-xl font-bold text-white">4.9/5</span>
-            <span className="text-gray-300">from 247+ clients</span>
+            <span className="text-lg font-bold text-white">4.9/5</span>
+            <span className="text-gray-300 text-sm">from 247+ clients</span>
             <motion.div
               animate={{ rotate: [0, 15, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
-              <Award className="w-6 h-6 text-[#B9935B]" />
+              <Award className="w-5 h-5 text-[#B9935B]" />
             </motion.div>
           </div>
         </div>
 
         {/* Animated Testimonials */}
-        <div className="mb-20">
+        <div className="mb-16">
           <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
         </div>
 
-        {/* Stats Section - Animated Numbers with Stars */}
-        <div className="max-w-4xl mx-auto mb-20 px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
+        {/* Stats Section */}
+        <div className="max-w-4xl mx-auto mb-16 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div 
               className="text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
             >
               <div className="flex justify-center mb-4">
                 {Array(5).fill(0).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                  >
-                   
-                  </motion.div>
+                  <div key={i}>
+                    <Star className="w-5 h-5 text-[#B9935B] fill-current" />
+                  </div>
                 ))}
               </div>
-              <div ref={stat1Ref} className="text-5xl font-bold text-[#B9935B] mb-2">0</div>
-              <div className="text-xl text-white">Happy Clients</div>
-            </motion.div>
+              <div ref={stat1Ref} className="text-4xl md:text-5xl font-bold text-[#B9935B] mb-2">0</div>
+              <div className="text-lg text-white">Happy Clients</div>
+            </div>
             
-            <motion.div 
+            <div 
               className="text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="flex justify-center mb-4">
                 {Array(5).fill(0).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.2 + i * 0.1 }}
-                  >
-                   
-                  </motion.div>
+                  <div key={i}>
+                    <Star className="w-5 h-5 text-[#B9935B] fill-current" />
+                  </div>
                 ))}
               </div>
-              <div ref={stat2Ref} className="text-5xl font-bold text-[#B9935B] mb-2">0%</div>
-              <div className="text-xl text-white">Avg Conversion Rate</div>
-            </motion.div>
+              <div ref={stat2Ref} className="text-4xl md:text-5xl font-bold text-[#B9935B] mb-2">0%</div>
+              <div className="text-lg text-white">Avg Conversion Rate</div>
+            </div>
             
-            <motion.div 
+            <div 
               className="text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
             >
               <div className="flex justify-center mb-4">
                 {Array(5).fill(0).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.4 + i * 0.1 }}
-                  >
-                   
-                  </motion.div>
+                  <div key={i}>
+                    <Star className="w-5 h-5 text-[#B9935B] fill-current" />
+                  </div>
                 ))}
               </div>
-              <div ref={stat3Ref} className="text-5xl font-bold text-[#B9935B] mb-2">0</div>
-              <div className="text-xl text-white">Avg Delivery Time</div>
-            </motion.div>
+              <div ref={stat3Ref} className="text-4xl md:text-5xl font-bold text-[#B9935B] mb-2">0</div>
+              <div className="text-lg text-white">Avg Delivery Time</div>
+            </div>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="flex justify-center mb-20">
+        <div className="flex justify-center mb-16">
           <motion.button
             whileHover={{ 
               scale: 1.05,
@@ -534,7 +465,7 @@ Pick the Landing Page Lead Booster when you&#39;re tired of low conversions and 
             >
               <Zap className="w-5 h-5" fill="#B9935B" />
             </motion.div>
-            <span>Ignite Your Conversions</span>
+            <Link href="/contact">Ignite Your Conversions</Link>
           </motion.button>
         </div>
 

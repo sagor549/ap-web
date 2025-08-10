@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { Send, Mail, MapPin, Phone } from 'lucide-react';
-import { AuroraBackground } from "@/components/ui/aura";
+
 
 function Contact() {
   const containerRef = useRef(null);
@@ -98,7 +98,7 @@ function Contact() {
   }, { scope: containerRef });
 
   return (
-    <AuroraBackground>
+    
 
    
     <section
@@ -129,66 +129,8 @@ function Contact() {
 
       {/* Content Section */}
       <div className="relative z-10 mt-4 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div ref={infoRef} className="flex flex-col gap-8">
-            <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-2xl p-8 lg:p-10">
-              <h3 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#B9935B' }}>
-Let&#39;s Talk Growth
-              </h3>
-              
-              <p className="text-lg lg:text-xl text-white/90 mb-8">
-              We&#39;ll show you how our landing pages can transform your conversion rates within days.
- 
-              </p>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-[#B9935B] p-2 rounded-full flex-shrink-0 mt-1">
-                    <Mail className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white">Email Us</h4>
-                    <p className="text-white/80">growth@apo.agency</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="bg-[#B9935B] p-2 rounded-full flex-shrink-0 mt-1">
-                    <Phone className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white">Call Us</h4>
-                    <p className="text-white/80">+1 (555) 123-4567</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="bg-[#B9935B] p-2 rounded-full flex-shrink-0 mt-1">
-                    <MapPin className="text-white" size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-white">HQ Location</h4>
-                    <p className="text-white/80">123 Conversion Ave, Suite 500<br/>San Francisco, CA 94107</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mt-8 p-6 rounded-xl border border-[#B9935B]/20" style={{ backgroundColor: 'rgba(185, 147, 91, 0.08)' }}>
-                <h4 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#B9935B]" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                  </svg>
-                  Working Hours
-                </h4>
-                <p className="text-white/90">Monday-Friday: 9am - 6pm PST</p>
-                <p className="text-white/90">Saturday: 10am - 2pm PST</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Contact Form */}
-          <div ref={formRef} className="bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-2xl p-8 lg:p-10 shadow-xl relative">
+        <div ref={infoRef} className="flex flex-col gap-8">
+             <div ref={formRef} className="bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-2xl p-8 lg:p-10 shadow-xl relative">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#B9935B] to-[#d4b37e] rounded-t-2xl"></div>
             <form className="space-y-6">
               <div>
@@ -279,6 +221,72 @@ Let&#39;s Talk Growth
               </div>
             </form>
           </div>
+            <div className="bg-gradient-to-r from-[#1a1a1a] to-[#0f0f0f] border border-[#2a2a2a] rounded-2xl p-8 lg:p-10">
+              <h3 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#B9935B' }}>
+Let&#39;s Talk Growth
+              </h3>
+              
+              <p className="text-lg lg:text-xl text-white/90 mb-8">
+              We&#39;ll show you how our landing pages can transform your conversion rates within days.
+ 
+              </p>
+              
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#B9935B] p-2 rounded-full flex-shrink-0 mt-1">
+                    <Mail className="text-white" size={20} />
+                  </div>
+                  <div>
+                   <h4 className="text-lg font-semibold text-white">Email Us</h4>
+<a 
+  href="mailto:info@apagency.ca" 
+  className="text-white/80 hover:underline"
+>
+  info@apagency.ca
+</a>
+
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#B9935B] p-2 rounded-full flex-shrink-0 mt-1">
+                    <Phone className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">Call Us</h4>
+                    <p className="text-white/80"> (647) 424-0504</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#B9935B] p-2 rounded-full flex-shrink-0 mt-1">
+                    <MapPin className="text-white" size={20} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white">HQ Location</h4>
+                    <p className="text-white/80">10330 Yonge St, Richmond Hill, ON L4C 5N1, Canada</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 p-6 rounded-xl border border-[#B9935B]/20" style={{ backgroundColor: 'rgba(185, 147, 91, 0.08)' }}>
+                <h4 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#B9935B]" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                  </svg>
+                  Working Hours
+                </h4>
+                <p className="text-white/90">Monday-Friday: 9am - 7pm </p>
+                <p className="text-white/90">Saturday: 12am - 4pm </p>
+              </div>
+            </div>
+          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          
+          
+          {/* Contact Form */}
+         
         </div>
       </div>
       
@@ -328,7 +336,7 @@ Let&#39;s Talk Growth
       {/* Accent Elements */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#B9935B]/10 to-transparent pointer-events-none"></div>
     </section>
-     </AuroraBackground>
+ 
   );
 }
 

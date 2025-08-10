@@ -2,7 +2,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-import Link from "next/link";
+import { pageTransition } from '@/constants/pageTransition';
+import { useTransitionRouter } from "next-view-transitions";
+import { usePathname } from "next/navigation";
+
 
 
 interface WebsiteImage {
@@ -16,6 +19,9 @@ const HeroSection: React.FC = () => {
   const [currentImage, setCurrentImage] = useState<number>(0);
   const [isDesktop, setIsDesktop] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const router = useTransitionRouter();
+  const pathname = usePathname();
+
 
 useEffect(() => {
     // Check if window is available (client-side)
@@ -258,9 +264,17 @@ useEffect(() => {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="pt-4"
             >
-              <Link href="/contact" className="text-black font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl" style={{background:"#B9935B"}}>
-                Build My Page Now
-              </Link>
+              <button
+      className="text-black font-bold py-3 px-6 md:py-4 md:px-8 rounded-lg text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+      style={{ background: "#B9935B" }}
+      onClick={(e) => {
+        e.preventDefault();
+        if (pathname === "/contact") return;
+        router.push("/contact", { onTransitionReady: pageTransition });
+      }}
+    >
+      Build My Page Now
+    </button>
             </motion.div>
           </motion.div>
 
