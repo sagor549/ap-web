@@ -137,7 +137,7 @@ function AboutSection() {
             fill
             className="object-center object-cover"
           />
-          <div className="absolute inset-0 bg-[#3F3F45] mix-blend-multiply opacity-70" />
+         
         </div>
 
         {/* Text Content */}
